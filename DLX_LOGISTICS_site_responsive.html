@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DLX LOGISTICS | Conciergerie Privée & Logistics sur-mesure Antananarivo</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Montserrat (Titres élégants) & Inter (Corps ultra-lisible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0B0F17',
+            brandObsidian: '#131A26',
+            brandRed: '#DC2626',
+            brandRedHover: '#B91C1C',
+            brandRedGlow: '#EF4444',
+            brandVenomWhite: '#FFFFFF',
+            brandLightGray: '#F8FAFC',
+          },
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================
+       INVERSED WHITE VENOM & CRIMSON RED DESIGN SYSTEM
+       ========================================================== */
+    * {
+      transition-property: color, background-color, border-color, box-shadow, transform, opacity, filter;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-duration: 200ms;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Architectural White Grid + Micro Venom Dots */
+    body {
+      background-color: #FFFFFF;
+      background-image: 
+        linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 2px 2px, rgba(11, 15, 23, 0.03) 1px, transparent 0);
+      background-size: 60px 60px, 60px 60px, 20px 20px;
+      background-position: 0 0, 0 0, 0 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fluid Glowing Venom Symbiote Bubbles */
+    .venom-bubble-red {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.14) 0%, rgba(239, 68, 68, 0.03) 60%, transparent 80%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+      animation: morphSymbiote 16s infinite alternate ease-in-out;
+    }
+
+    .venom-bubble-dark {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: radial-gradient(circle, rgba(11, 15, 23, 0.09) 0%, rgba(220, 38, 38, 0.04) 50%, transparent 80%);
+      filter: blur(100px);
+      z-index: -1;
+      pointer-events: none;
+      animation: morphSymbiote 20s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes morphSymbiote {
+      0% {
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      50% {
+        border-radius: 70% 30% 46% 54% / 30% 60% 40% 70%;
+        transform: translate(30px, -20px) rotate(90deg) scale(1.08);
+      }
+      100% {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+        transform: translate(-15px, 30px) rotate(180deg) scale(0.95);
+      }
+    }
+
+    /* Hero Background Overlay with Luxury Architectural Image */
+    #hero {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 250, 252, 0.96) 100%),
+                  url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    }
+
+    /* Glassmorphism Dark Obsidian Cards */
+    .venom-glass-card {
+      background: rgba(11, 15, 23, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      box-shadow: 0 15px 40px -15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.25rem;
+    }
+
+    .venom-glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #DC2626, #FFF, #DC2626, transparent);
+      background-size: 200% 100%;
+      opacity: 0.4;
+      animation: shimmerEdge 5s infinite linear;
+    }
+
+    @keyframes shimmerEdge {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .venom-glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(220, 38, 38, 0.6);
+      box-shadow: 0 20px 45px -15px rgba(220, 38, 38, 0.18);
+    }
+
+    /* Inverted White Venom Card Variant */
+    .white-venom-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(220, 38, 38, 0.18);
+      box-shadow: 0 10px 30px -10px rgba(11, 15, 23, 0.04);
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .white-venom-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(220, 38, 38, 0.5);
+      box-shadow: 0 20px 40px -10px rgba(220, 38, 38, 0.12);
+    }
+
+    /* Liquid Red Button Animation */
+    .liquid-red-btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .liquid-red-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(30deg) translate(-100%, 0);
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .liquid-red-btn:hover::after {
+      transform: rotate(30deg) translate(100%, 0);
+    }
+
+    /* Custom Red Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0F17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #DC2626, #991B1B);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #EF4444;
+    }
+
+
+    /* Responsive polish: phone, tablet, laptop and wide screens */
+    html { scroll-padding-top: 6.5rem; }
+    img, video, iframe { max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    input, select, textarea { max-width: 100%; min-width: 0; }
+    @media (max-width: 1279px) {
+      header > div:first-child { min-height: 4.5rem; height: auto; }
+    }
+    @media (max-width: 639px) {
+      body { font-size: 14px; }
+      #hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      #hero h1 { font-size: clamp(2rem, 9vw, 2.75rem); line-height: 1.12; }
+      #hero p { font-size: .9rem; line-height: 1.65; }
+      section { scroll-margin-top: 5.5rem; }
+      #commander, #services, #informations-legales, #suivi, #faq,
+      #comment-ca-marche { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      #helpWidget { left: .75rem; bottom: .75rem; }
+      #helpToggle { padding: .55rem .8rem; gap: .55rem; }
+      #helpToggle span:last-child { font-size: 10px; }
+      #helpPanel { width: min( calc(100vw - 1.5rem), 360px); }
+      .venom-bubble-red, .venom-bubble-dark { transform: scale(.65); }
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+      #hero h1 { font-size: clamp(2.6rem, 5vw, 4rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="font-sans bg-white text-brandDark antialiased selection:bg-brandRed selection:text-white">
+
+  <!-- Symbiote Ambient Background Orbs -->
+  <div class="venom-bubble-red" style="top: 3%; left: -8%;"></div>
+  <div class="venom-bubble-dark" style="top: 30%; right: -10%;"></div>
+  <div class="venom-bubble-red" style="top: 65%; left: 10%;"></div>
+
+  <!-- ================= NAVBAR FIXE ================= -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-brandDark/95 backdrop-blur-xl border-b border-brandRed/25 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo Minimaliste Texte Uniquement -->
+      <a href="#hero" class="flex flex-col group shrink-0 whitespace-nowrap">
+        <span class="font-montserrat text-base sm:text-xl lg:text-2xl font-extrabold tracking-wide text-white group-hover:text-brandRed transition-colors inline-flex items-center gap-1">
+          <span>DLX</span><span class="text-brandRed">LOGISTICS</span>
+        </span>
+        <span class="text-[9px] font-semibold text-gray-400 tracking-widest uppercase -mt-0.5">Private Concierge & Sourcing</span>
+      </a>
+
+      <!-- Liens de Navigation -->
+      <nav class="hidden xl:flex items-center gap-1 2xl:gap-2 text-[10px] 2xl:text-xs font-semibold uppercase tracking-wider text-gray-300">
+        <a href="#hero" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Accueil</a>
+        <a href="#comment-ca-marche" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Processus</a>
+        <a href="#services" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Services</a>
+        <a href="#informations-legales" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Informations légales</a>
+        <a href="#suivi" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Suivi Colis</a>
+        <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="relative px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">
+          Panier <span id="navCartCount" class="ml-1 inline-flex min-w-5 h-5 px-1 items-center justify-center rounded-full bg-brandRed text-white text-[10px]">0</span>
+        </a>
+        <a href="#faq" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">FAQ</a>
+      </nav>
+
+      <!-- Menu compact pour téléphone et tablette -->
+      <button id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu"
+        class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-white/20 text-white hover:bg-white/10"
+        aria-label="Ouvrir le menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <!-- Bouton d'action WhatsApp -->
+      <a href="https://wa.me/261340299201" target="_blank" rel="noopener noreferrer" 
+         class="hidden sm:inline-flex items-center justify-center px-3 sm:px-4 py-2.5 rounded-xl font-bold text-[10px] sm:text-xs uppercase tracking-wider text-white bg-gradient-to-r from-brandRed to-brandRedHover transition-all shadow-md shadow-brandRed/20 hover:shadow-brandRed/40 transform hover:-translate-y-0.5 liquid-red-btn">
+        <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.001 3.655 3.744-.988z"/>
+        </svg>
+        Commander (WhatsApp)
+      </a>
+    </div>
+    <nav id="mobileMenu" class="hidden xl:hidden border-t border-white/10 bg-brandDark px-4 py-3">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-semibold uppercase tracking-wide text-gray-200">
+        <a href="#hero" class="rounded-lg px-3 py-3 hover:bg-white/10">Accueil</a>
+        <a href="#comment-ca-marche" class="rounded-lg px-3 py-3 hover:bg-white/10">Processus</a>
+        <a href="#services" class="rounded-lg px-3 py-3 hover:bg-white/10">Services</a>
+        <a href="#informations-legales" class="rounded-lg px-3 py-3 hover:bg-white/10">Informations légales</a>
+        <a href="#suivi" class="rounded-lg px-3 py-3 hover:bg-white/10">Suivi colis</a>
+        <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="rounded-lg px-3 py-3 hover:bg-white/10">Panier</a>
+        <a href="#faq" class="rounded-lg px-3 py-3 hover:bg-white/10">FAQ</a>
+        <a href="https://wa.me/261340299201" target="_blank" rel="noopener noreferrer" class="rounded-lg px-3 py-3 bg-brandRed text-white text-center col-span-2 sm:col-span-1">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= BANNIÈRE DE SÉCURITÉ (NUMÉRO UNIQUE) ================= -->
+  <div class="pt-20 bg-brandDark border-b border-brandRed/40 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
+      <div class="flex items-center space-x-2 text-xs font-semibold text-gray-200">
+        <span class="p-1 rounded bg-brandRed text-white shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        </span>
+        <span><strong class="text-white">SÉCURITÉ STRICTE :</strong> Le numéro officiel unique de DLX LOGISTICS est le <span class="text-brandRed font-mono font-bold text-sm">034 02 992 01</span>. Aucun autre numéro n'est habilité.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION HERO ================= -->
+  <section id="hero" class="py-20 md:py-28 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <!-- Badge Exclusif -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-brandDark border border-brandRed/30 text-[11px] font-bold text-brandRed uppercase tracking-widest shadow-lg mb-6">
+        <span class="w-2 h-2 rounded-full bg-brandRed animate-pulse"></span>
+        Service Global de Conciergerie Privée & Sourcing sur-mesure
+      </div>
+
+      <!-- Titre Raffiné -->
+      <h1 class="font-montserrat text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brandDark max-w-4xl mx-auto leading-tight">
+        Conciergerie Privée & Logistics sur-mesure à <span class="text-brandRed">Antananarivo</span>
+      </h1>
+
+      <!-- Sous-titre Raffiné -->
+      <p class="mt-6 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed font-normal">
+        Recherche, sourcing exclusif et acheminement de tous vos produits à Madagascar, sans restriction de catégorie et en toute confidentialité.
+      </p>
+
+      <!-- Boutons d'action -->
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#commander" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-brandRed to-brandRedHover shadow-xl shadow-brandRed/20 hover:shadow-brandRed/40 transition-all duration-300 transform hover:-translate-y-0.5 liquid-red-btn">
+          Lancer une recherche
+        </a>
+        <button id="openModalBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-brandDark border border-brandRed/30 hover:border-brandRed hover:text-brandRed shadow-md transition-all duration-300">
+          Voir le mini-tuto
+        </button>
+      </div>
+
+      <!-- Badges de réassurance -->
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto pt-8 border-t border-gray-300/60">
+        <div class="white-venom-card p-4 flex items-center justify-center space-x-3 text-xs font-bold text-brandDark">
+          <span class="p-2 rounded-lg bg-brandDark text-brandRed border border-brandRed/30">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </span>
+          <span>Acompte 50% Mvola (034 02 992 01)</span>
+        </div>
+        <div class="white-venom-card p-4 flex items-center justify-center space-x-3 text-xs font-bold text-brandDark">
+          <span class="p-2 rounded-lg bg-brandDark text-brandRed border border-brandRed/30">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </span>
+          <span>Livraison sécurisée à Tana</span>
+        </div>
+        <div class="white-venom-card p-4 flex items-center justify-center space-x-3 text-xs font-bold text-brandDark">
+          <span class="p-2 rounded-lg bg-brandDark text-brandRed border border-brandRed/30">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </span>
+          <span>Canal Officiel Unique</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION PROCESSUS EN 4 ÉTAPES ================= -->
+  <section id="comment-ca-marche" class="py-20 bg-brandDark text-white border-y border-brandRed/25 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Protocole Client</span>
+        <h2 class="font-montserrat text-2xl sm:text-4xl font-extrabold mt-1 text-white">Processus en 4 Étapes Simple</h2>
+        <p class="mt-3 text-gray-400 text-xs sm:text-sm">Une conciergerie fluide et entièrement sécurisée.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="venom-glass-card p-6">
+          <div class="text-xs font-bold text-brandRed uppercase tracking-widest mb-3">Étape 01</div>
+          <h3 class="font-montserrat text-lg font-bold text-white mb-2">Demande sur-mesure</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">Transmettez-nous la description du produit ou la référence souhaitée.</p>
+        </div>
+
+        <div class="venom-glass-card p-6">
+          <div class="text-xs font-bold text-brandRed uppercase tracking-widest mb-3">Étape 02</div>
+          <h3 class="font-montserrat text-lg font-bold text-white mb-2">Sourcing & Proposition</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">Notre équipe recherche l'option optimale au meilleur coût et valide l'offre avec vous.</p>
+        </div>
+
+        <div class="venom-glass-card p-6">
+          <div class="text-xs font-bold text-brandRed uppercase tracking-widest mb-3">Étape 03</div>
+          <h3 class="font-montserrat text-lg font-bold text-white mb-2">Acompte 50% Mvola</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">Versement de l'acompte de 50% uniquement au numéro officiel <span class="font-mono text-white font-bold">034 02 992 01</span>.</p>
+        </div>
+
+        <div class="venom-glass-card p-6">
+          <div class="text-xs font-bold text-brandRed uppercase tracking-widest mb-3">Étape 04</div>
+          <h3 class="font-montserrat text-lg font-bold text-white mb-2">Livraison & Solde</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">Livraison main propre à Antananarivo. Solde des 50% restants (Cash ou Mvola).</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FORMULAIRE DE COMMANDE FLEXIBLE ================= -->
+  <section id="commander" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="venom-glass-card p-8 sm:p-12 text-white">
+        <div class="text-center mb-10">
+          <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Demande de Recherche</span>
+          <h2 class="font-montserrat text-2xl sm:text-4xl font-extrabold mt-1 text-white">Formulaire de Commande</h2>
+          <p class="mt-2 text-gray-400 text-xs">Indiquez vos besoins. Votre dossier sera traité directement sur WhatsApp.</p>
+        </div>
+
+        <form id="whatsappForm" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="fullName" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Nom & Prénom *</label>
+              <input type="text" id="fullName" required placeholder="Ex: Jean Dupont" 
+                class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 text-xs" />
+            </div>
+
+            <div>
+              <label for="budget" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Budget estimé (Ar / €) *</label>
+              <input type="text" id="budget" required placeholder="Ex: 500 000 Ar" 
+                class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 text-xs" />
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Adresse e-mail</label>
+              <input type="email" id="email" placeholder="exemple@email.com"
+                class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 text-xs" />
+            </div>
+          </div>
+
+          <div>
+            <label for="product" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Description générale du produit / besoin *</label>
+            <textarea id="product" rows="4" required placeholder="Décrivez l'article recherché (caractéristiques, références ou liens éventuels)..." 
+              class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 resize-none text-xs"></textarea>
+          </div>
+
+          <!-- Case à cocher obligatoire des CGU -->
+          <div class="pt-1">
+            <label class="flex items-start space-x-3 cursor-pointer group">
+              <input type="checkbox" id="termsCheckbox" required class="mt-0.5 w-4 h-4 rounded border-brandRed/40 text-brandRed focus:ring-brandRed bg-brandDark cursor-pointer" />
+              <span class="text-xs text-gray-400 group-hover:text-gray-200">
+                J'accepte expressément les <button type="button" id="openTermsModalBtn" class="text-brandRed font-bold underline hover:text-white">Conditions Générales de Service & Limitation de Responsabilité</button>.
+              </span>
+            </label>
+          </div>
+
+
+          <!-- Accès au panier commun des commandes -->
+          <div class="mt-6 rounded-2xl border border-brandRed/30 bg-white p-5 text-brandDark">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <p class="font-montserrat text-sm font-extrabold">Votre panier de commandes</p>
+                <p class="mt-1 text-xs text-gray-500">Retrouvez et gérez toutes vos demandes dans le panier commun.</p>
+              </div>
+              <span id="cartCount" class="text-xs font-bold text-brandRed">0 demande</span>
+            </div>
+            <button type="button" id="addToCartBtn" class="mt-4 w-full sm:w-auto px-5 py-2.5 rounded-lg border border-brandRed text-brandRed text-xs font-bold uppercase tracking-wide hover:bg-red-50">
+              Ajouter cette demande au panier
+            </button>
+            <p id="formNotice" class="mt-3 text-xs text-brandRed" role="status" aria-live="polite"></p>
+            <a href="#panier-commandes" class="mt-3 inline-flex text-xs font-bold text-brandRed underline">Ouvrir le panier des commandes</a>
+          </div>
+
+          <p class="text-[11px] leading-relaxed text-gray-400" role="note">
+            Pour transmettre votre demande, WhatsApp doit être installé et votre compte doit être connecté.
+            Le bouton prépare automatiquement un message destiné au <strong class="text-white">034 02 992 01</strong> :
+            vérifiez-le dans WhatsApp, puis appuyez sur « Envoyer ». L’application WhatsApp sur téléphone est recommandée.
+            Si le message prérempli ne s’affiche pas, ouvrez directement WhatsApp et envoyez votre demande au 034 02 992 01.
+          </p>
+          <button type="submit" class="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-brandRed to-brandRedHover shadow-lg shadow-brandRed/20 hover:shadow-brandRed/40 transition-all flex items-center justify-center space-x-2 liquid-red-btn">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.001 3.655 3.744-.988z"/>
+            </svg>
+            <span>Envoyer la demande sur WhatsApp (034 02 992 01)</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ACCÈS AU PANIER DÉDIÉ ================= -->
+  <section id="panier-commandes" class="py-14 bg-brandDark text-white border-y border-brandRed/25">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-brandRed/30 bg-brandObsidian p-7 sm:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Espace personnel</span>
+          <h2 class="font-montserrat text-2xl sm:text-3xl font-extrabold mt-2">Votre panier de commandes</h2>
+          <p class="mt-2 text-sm text-gray-400 max-w-xl">Retrouvez toutes vos demandes dans un espace dédié, plus clair et plus facile à gérer. Le panier s’ouvre dans un nouvel onglet.</p>
+        </div>
+        <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center px-6 py-4 rounded-xl bg-brandRed text-white text-xs font-bold uppercase tracking-wide hover:bg-brandRedHover shadow-lg shadow-brandRed/20">
+          Ouvrir mon panier <span id="navCartCount" class="ml-2 inline-flex min-w-6 h-6 px-1 items-center justify-center rounded-full bg-white text-brandRed text-[10px]">0</span>
+        </a>
+      </div>
+      <p class="mt-4 text-[10px] leading-relaxed text-gray-500">Les demandes sont conservées dans le stockage local de ce navigateur. Elles ne sont pas automatiquement partagées entre appareils.</p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES DE CONCIERGERIE GÉNÉRALISTES ================= -->
+  <section id="services" class="py-20 bg-brandLightGray border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Prestations</span>
+        <h2 class="font-montserrat text-2xl sm:text-4xl font-extrabold mt-1 text-brandDark">Services de Sourcing Global</h2>
+        <p class="mt-2 text-gray-600 text-xs">Aucune restriction de catégorie. Une prise en charge intégrale.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="white-venom-card p-8">
+          <div class="w-10 h-10 rounded-xl bg-brandDark text-brandRed flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="font-montserrat font-bold text-lg text-brandDark mb-2">Sourcing Général Sur-Mesure</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Recherche ciblée de tout type d'article ou d'équipement spécifique selon votre cahier des charges.</p>
+        </div>
+
+        <div class="white-venom-card p-8">
+          <div class="w-10 h-10 rounded-xl bg-brandDark text-brandRed flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-montserrat font-bold text-lg text-brandDark mb-2">Sourcing Express & Urgent</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Traitement prioritaire pour vos besoins urgents avec suivi rigoureux de l'acheminement.</p>
+        </div>
+
+        <div class="white-venom-card p-8">
+          <div class="w-10 h-10 rounded-xl bg-brandDark text-brandRed flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-montserrat font-bold text-lg text-brandDark mb-2">Conciergerie Privée d'Exception</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Gestion confidentielle des commandes haut de gamme avec remise exclusive en main propre à Antananarivo.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= INFORMATIONS LÉGALES & CONDITIONS ================= -->
+  <section id="informations-legales" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Transparence & confiance</span>
+        <h2 class="font-montserrat text-2xl sm:text-4xl font-extrabold mt-1 text-brandDark">Informations légales & conditions de service</h2>
+        <p class="mt-3 text-gray-600 text-xs sm:text-sm">Les règles essentielles qui encadrent les demandes, les commandes, les paiements et les livraisons de DLX LOGISTICS.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">1. Nature du service</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">DLX LOGISTICS propose un service de conciergerie, de recherche et de sourcing selon les besoins communiqués par le client. Le rôle exact de la marque pour chaque demande est précisé avant confirmation.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">2. Demandes & disponibilité</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Une demande envoyée via le site ou WhatsApp ne constitue pas, à elle seule, une commande confirmée. La disponibilité, les caractéristiques, le prix et les conditions sont communiqués au client avant validation.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">3. Prix & paiement</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Le montant, l'acompte éventuel, le solde et les frais applicables sont confirmés par écrit avant paiement. Pour l'acompte annoncé sur ce site, utilisez uniquement le numéro officiel Mvola : <strong class="font-mono text-brandDark">034 02 992 01</strong>. Demandez une confirmation en cas de doute.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">4. Délais & mises à jour</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Les délais communiqués sont des estimations lorsqu'ils dépendent de fournisseurs, transporteurs, formalités ou événements extérieurs. Le client peut demander une mise à jour de sa commande tous les 7 jours.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">5. Livraison & rendez-vous</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">À Antananarivo, le lieu et l'horaire de remise sont convenus avec le client. La livraison ou remise en main propre dépend de la disponibilité et d'un point de rendez-vous accessible et jugé sûr par les deux parties.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">6. Réclamations & échanges</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Toute question ou réclamation doit être adressée au canal officiel, avec la référence de la demande et les éléments utiles. DLX LOGISTICS examine les demandes de bonne foi et répond dans un délai raisonnable, selon les informations disponibles.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">7. Informations & visuels</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Les descriptions, images et prix présentés sont fournis à titre informatif, sauf confirmation écrite contraire. Les marques, logos, photographies et contenus appartenant à des tiers restent soumis aux droits de leurs titulaires.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">8. Comportement & sécurité</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">Les échanges doivent rester respectueux. DLX LOGISTICS peut suspendre une demande en cas de fraude présumée, de menace, de harcèlement, de demande illicite ou de risque sérieux pour la sécurité, en informant le client lorsque cela est possible.</p>
+        </div>
+        <div class="white-venom-card p-6">
+          <h3 class="font-montserrat font-bold text-sm text-brandDark mb-2">9. Responsabilité</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">DLX LOGISTICS ne peut garantir les actes ou délais de fournisseurs et transporteurs indépendants ni les événements imprévisibles hors de son contrôle. Cette disposition ne supprime pas les obligations légales de la marque ni les droits impératifs du client prévus par la loi applicable.</p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-brandDark text-white rounded-2xl p-6 sm:p-8 border border-brandRed/30">
+        <h3 class="font-montserrat font-bold text-lg mb-2">Important — confirmation avant paiement</h3>
+        <p class="text-xs text-gray-300 leading-relaxed">Avant tout versement, vérifiez le récapitulatif de votre demande, le prix total, les éventuels frais, les délais estimés, les modalités de livraison et le numéro de paiement officiel. Conservez vos échanges et justificatifs de paiement.</p>
+        <p class="mt-3 text-[11px] text-gray-400 leading-relaxed">Ces informations sont un cadre général de fonctionnement et ne remplacent pas un avis juridique. Les droits des consommateurs et les règles impératives applicables à Madagascar demeurent réservés.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INFORMATION DE MISE À JOUR DES COMMANDES ================= -->
+  <section id="suivi" class="py-20 bg-brandDark text-white border-t border-brandRed/25">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Espace Client</span>
+      <h2 class="font-montserrat text-2xl sm:text-3xl font-extrabold mt-1 text-white">Mise à jour de votre commande</h2>
+      <p class="mt-3 text-gray-300 text-sm leading-relaxed max-w-2xl mx-auto">Vous souhaitez connaître l'évolution de votre demande ? Chaque client peut solliciter une mise à jour tous les 7 jours auprès de DLX LOGISTICS, via notre canal WhatsApp officiel.</p>
+      <div class="mt-7 inline-flex items-center gap-3 rounded-xl border border-brandRed/30 bg-brandObsidian px-5 py-4 text-left">
+        <span class="text-xl font-montserrat font-bold text-brandRed" aria-hidden="true">7J</span>
+        <div>
+          <p class="text-white font-bold text-sm">Une demande de mise à jour tous les 7 jours</p>
+          <p class="text-gray-400 text-xs mt-1">Merci d'indiquer votre nom, votre numéro de téléphone et le nom ou la description de votre colis.</p>
+        </div>
+      </div>
+      <div class="mt-7">
+        <a href="https://wa.me/261340299201?text=Bonjour%20DLX%20LOGISTICS%2C%20je%20souhaite%20un%20suivi%20de%20mon%20colis.%20Mon%20nom%20%3A%20____.%20Mon%20num%C3%A9ro%20de%20t%C3%A9l%C3%A9phone%20%3A%20____.%20Nom%20ou%20description%20du%20colis%20%3A%20____." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-brandRed to-brandRedHover shadow-lg shadow-brandRed/20 hover:shadow-brandRed/40 liquid-red-btn">
+          Demander une mise à jour sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION FAQ INTERACTIVE ================= -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Assistance</span>
+        <h2 class="font-montserrat text-2xl sm:text-3xl font-extrabold mt-1 text-brandDark">Questions Fréquentes</h2>
+      </div>
+
+      <div class="space-y-3">
+        <div class="white-venom-card p-5 cursor-pointer faq-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-montserrat font-bold text-sm text-brandDark">Quel est le seul numéro officiel pour effectuer l'acompte ?</h4>
+            <span class="text-brandRed font-bold">+</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-2 hidden faq-answer">Le seul numéro officiel et autorisé pour les transferts Mvola de 50% d'acompte est le <strong class="text-brandDark font-mono">034 02 992 01</strong>. Aucun autre numéro n'appartient à DLX LOGISTICS.</p>
+        </div>
+
+        <div class="white-venom-card p-5 cursor-pointer faq-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-montserrat font-bold text-sm text-brandDark">Comment se déroule la livraison à Antananarivo ?</h4>
+            <span class="text-brandRed font-bold">+</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-2 hidden faq-answer">Une fois le colis arrivé et vérifié par nos équipes, nous convenons d'un rendez-vous pour une remise en main propre sécurisée à Antananarivo. Le solde des 50% restants est réglé lors de la remise.</p>
+        </div>
+
+        <div class="white-venom-card p-5 cursor-pointer faq-item">
+          <div class="flex justify-between items-center">
+            <h4 class="font-montserrat font-bold text-sm text-brandDark">Que se passe-t-il si l'option de sourcing ne me convient pas ?</h4>
+            <span class="text-brandRed font-bold">+</span>
+          </div>
+          <p class="text-xs text-gray-600 mt-2 hidden faq-answer">Avant la validation finale et l'envoi de l'acompte, nous ajustons gratuitement nos recherches jusqu'à trouver l'alternative idéale qui correspond à vos attentes.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER & LOCALISATION ================= -->
+  <footer class="bg-brandDark text-gray-400 py-14 border-t border-brandRed/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
+      
+      <div>
+        <span class="font-montserrat text-xl font-extrabold tracking-wider text-white">
+          DLX <span class="text-brandRed">LOGISTICS</span>
+        </span>
+        <p class="mt-3 text-xs text-gray-400 leading-relaxed">
+          Conciergerie privée et service de sourcing sur mesure.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-montserrat font-bold text-white uppercase text-xs tracking-wider mb-3">Contact Officiel Unique</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+<li class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-brandRed shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span class="font-mono text-white text-xs font-bold">034 02 992 01</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-montserrat font-bold text-white uppercase text-xs tracking-wider mb-3">Protection & Legal</h4>
+        <p class="text-xs text-gray-500 leading-relaxed mb-2">
+          &copy; <span id="year"></span> DLX LOGISTICS. Tous droits réservés.
+        </p>
+        <button id="openTermsModalFooter" class="text-xs text-brandRed font-bold underline hover:text-white">
+          Consulter le Contrat Général
+        </button>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- ================= MODALE MINI-TUTO ================= -->
+  <div id="tutoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="venom-glass-card max-w-lg w-full p-6 relative transform scale-95 transition-all duration-300 text-white" id="modalContent">
+      <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-brandRed">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <span class="text-xs font-bold text-brandRed uppercase tracking-widest font-montserrat">Guide Rapide</span>
+      <h3 class="font-montserrat text-xl font-extrabold text-white mt-1 mb-5">Comment commander ?</h3>
+
+      <div class="space-y-3 text-xs text-gray-300">
+        <div class="flex space-x-3 items-start">
+          <span class="w-5 h-5 rounded bg-brandRed text-white font-bold flex items-center justify-center shrink-0 text-[10px]">1</span>
+          <p><strong class="text-white">Remplissez le formulaire :</strong> Donnez la description de votre produit.</p>
+        </div>
+        <div class="flex space-x-3 items-start">
+          <span class="w-5 h-5 rounded bg-brandRed text-white font-bold flex items-center justify-center shrink-0 text-[10px]">2</span>
+          <p><strong class="text-white">Validation WhatsApp :</strong> Recevez la confirmation du tarif officiel.</p>
+        </div>
+        <div class="flex space-x-3 items-start">
+          <span class="w-5 h-5 rounded bg-brandRed text-white font-bold flex items-center justify-center shrink-0 text-[10px]">3</span>
+          <p><strong class="text-white">Acompte 50% Mvola :</strong> Envoyez les 50% exclusivement au <span class="font-mono text-white font-bold">034 02 992 01</span>.</p>
+        </div>
+        <div class="flex space-x-3 items-start">
+          <span class="w-5 h-5 rounded bg-brandRed text-white font-bold flex items-center justify-center shrink-0 text-[10px]">4</span>
+          <p><strong class="text-white">Réception & Solde :</strong> Livraison à Antananarivo et solde des 50% restants.</p>
+        </div>
+      </div>
+
+      <button id="closeModalConfirm" class="mt-6 w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-brandRed hover:bg-brandRedHover transition-all">
+        Compris, lancer ma commande
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MODALE CONTRAT & CGU ================= -->
+  <div id="termsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="venom-glass-card max-w-2xl w-full p-6 relative transform scale-95 transition-all duration-300 text-white max-h-[85vh] flex flex-col" id="termsModalContent">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-brandRed/30 shrink-0">
+        <div>
+          <span class="text-xs font-bold text-brandRed uppercase tracking-widest font-montserrat">Cadre Légal</span>
+          <h3 class="font-montserrat text-lg font-extrabold text-white">Conditions Générales de Service</h3>
+        </div>
+        <button id="closeTermsModalBtn" class="text-gray-400 hover:text-brandRed">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto my-3 pr-2 space-y-3 text-xs text-gray-300 leading-relaxed shrink border-b border-brandRed/20 pb-3">
+        <p><strong class="text-white">1. Demande et confirmation :</strong> L'envoi du formulaire constitue une demande de renseignements ou de sourcing. La commande est confirmée uniquement après accord sur le produit, le prix, les frais éventuels, les délais estimés et les modalités de paiement.</p>
+        <p><strong class="text-white">2. Nature du service :</strong> DLX LOGISTICS fournit un service de conciergerie, de recherche et de sourcing. Le rôle de la marque et les caractéristiques connues du produit sont précisés au client avant validation.</p>
+        <p><strong class="text-white">3. Paiement :</strong> Lorsqu'un acompte de 50 % est convenu, il doit être envoyé uniquement au numéro Mvola officiel <span class="font-mono text-brandRed font-bold">034 02 992 01</span>. Le solde et son échéance sont confirmés avant la commande. Le client doit conserver son justificatif.</p>
+        <p><strong class="text-white">4. Délais et informations :</strong> Les délais sont estimatifs lorsqu'ils dépendent de fournisseurs, transporteurs ou formalités externes. Le client peut demander une mise à jour tous les 7 jours via le canal officiel.</p>
+        <p><strong class="text-white">5. Livraison :</strong> La remise à Antananarivo est organisée sur rendez-vous, à un endroit accessible et sûr accepté par les deux parties. Le lieu et l'horaire doivent être confirmés avant le déplacement.</p>
+        <p><strong class="text-white">6. Réclamations :</strong> Toute difficulté doit être signalée au canal officiel avec la référence de commande et les justificatifs utiles. Chaque demande est examinée selon les circonstances et les obligations légales applicables.</p>
+        <p><strong class="text-white">7. Responsabilité :</strong> DLX LOGISTICS ne contrôle pas directement les opérations de fournisseurs ou transporteurs indépendants et ne peut garantir leurs délais. Cela ne l'exonère pas de ses propres obligations ni des droits impératifs du client prévus par la loi.</p>
+        <p><strong class="text-white">8. Sécurité et comportement :</strong> Les échanges doivent rester respectueux. En présence d'un risque sérieux, d'une fraude présumée ou d'une demande illicite, DLX LOGISTICS peut suspendre les échanges ou la prestation dans le respect de la loi.</p>
+        <p><strong class="text-white">9. Propriété intellectuelle :</strong> Les éléments propres à DLX LOGISTICS (nom, logo, textes et visuels originaux) ne peuvent être reproduits sans autorisation. Les éléments appartenant à des tiers restent soumis aux droits de leurs titulaires.</p>
+        <p class="text-gray-400">Les présentes conditions ne limitent pas les droits que la législation applicable reconnaît obligatoirement au client. Elles constituent un cadre général et ne remplacent pas une validation juridique professionnelle à Madagascar.</p>
+      </div>
+
+      <div class="shrink-0">
+        <button id="acceptTermsBtn" class="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-brandRed hover:bg-brandRedHover transition-all">
+          J'accepte les conditions contractuelles
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu mobile/tablette
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+          const open = mobileMenu.classList.toggle('hidden') === false;
+          mobileMenuToggle.setAttribute('aria-expanded', String(open));
+          mobileMenuToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }));
+      }
+
+      // Widget d’aide : ouverture/fermeture accessible
+      const helpToggle = document.getElementById('helpToggle');
+      const helpPanel = document.getElementById('helpPanel');
+      const helpClose = document.getElementById('helpClose');
+      const toggleHelp = (forceOpen) => {
+        if (!helpPanel || !helpToggle) return;
+        const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : helpPanel.classList.contains('hidden');
+        helpPanel.classList.toggle('hidden', !shouldOpen);
+        helpToggle.setAttribute('aria-expanded', String(shouldOpen));
+      };
+      if (helpToggle) helpToggle.addEventListener('click', () => toggleHelp());
+      if (helpClose) helpClose.addEventListener('click', () => toggleHelp(false));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleHelp(false);
+      });
+
+      // 1. Année dynamique
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 2. Panier central, messages intégrés à la page et envoi WhatsApp
+      const whatsappForm = document.getElementById('whatsappForm');
+      const termsCheckbox = document.getElementById('termsCheckbox');
+      const addToCartBtn = document.getElementById('addToCartBtn');
+      const CART_KEY = 'dlx_logistics_cart_v2';
+      const phoneNumber = '261340299201';
+      let cart = [];
+
+      try {
+        const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+        cart = Array.isArray(saved) ? saved : [];
+      } catch (error) { cart = []; }
+
+      const showNotice = (message, targetId = 'formNotice', isError = false) => {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.textContent = message;
+        target.className = 'mt-3 text-xs ' + (isError ? 'text-red-600' : 'text-green-700');
+      };
+
+      const saveCart = () => {
+        try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (error) {
+          showNotice('Le navigateur ne permet pas de sauvegarder le panier.', 'cartNotice', true);
+        }
+      };
+
+      const getRequest = () => ({
+        id: (window.crypto && window.crypto.randomUUID) ? window.crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2),
+        name: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        budget: document.getElementById('budget').value.trim(),
+        product: document.getElementById('product').value.trim()
+      });
+
+      const validFields = () => {
+        const request = getRequest();
+        if (!request.name || !request.budget || !request.product) {
+          showNotice('Veuillez renseigner votre nom, votre budget et la description du produit.', 'formNotice', true);
+          return false;
+        }
+        const emailInput = document.getElementById('email');
+        if (request.email && !emailInput.checkValidity()) {
+          showNotice('Veuillez vérifier le format de votre adresse e-mail.', 'formNotice', true);
+          emailInput.focus();
+          return false;
+        }
+        return true;
+      };
+
+      const makeWhatsAppLink = (message) =>
+        'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+
+      const renderCart = () => {
+        const containers = ['cartItems'];
+        const count = cart.length;
+        ['navCartCount', 'cartCount', 'cartSectionCount'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = count + (count > 1 ? ' demandes' : ' demande');
+        });
+
+        containers.forEach(id => {
+          const container = document.getElementById(id);
+          if (!container) return;
+          container.innerHTML = '';
+          if (!count) {
+            const empty = document.createElement('p');
+            empty.className = 'text-xs text-gray-400';
+            empty.textContent = 'Votre panier est vide pour le moment.';
+            container.appendChild(empty);
+            return;
+          }
+
+          cart.forEach((item, index) => {
+            const row = document.createElement('article');
+            row.className = 'border-b border-white/10 last:border-0 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3';
+            const info = document.createElement('div');
+            info.className = 'min-w-0';
+            const title = document.createElement('h3');
+            title.className = 'text-sm font-bold text-white';
+            title.textContent = (index + 1) + '. ' + item.product;
+            const details = document.createElement('p');
+            details.className = 'mt-1 text-xs text-gray-400';
+            details.textContent = 'Client : ' + item.name + ' · Budget : ' + item.budget + (item.email ? ' · E-mail : ' + item.email : '');
+            info.append(title, details);
+
+            const controls = document.createElement('div');
+            controls.className = 'flex flex-wrap gap-2';
+            const follow = document.createElement('a');
+            follow.href = makeWhatsAppLink('Bonjour DLX LOGISTICS, je souhaite un suivi de mon colis. Nom : ' + item.name + '. Numéro de téléphone : _____. Colis / produit : ' + item.product + '. Merci de me communiquer son état d’avancement.');
+            follow.target = '_blank';
+            follow.rel = 'noopener noreferrer';
+            follow.className = 'px-3 py-2 rounded-lg bg-brandRed text-white text-[10px] font-bold';
+            follow.textContent = 'Demander un suivi';
+
+            const remove = document.createElement('button');
+            remove.type = 'button';
+            remove.className = 'px-3 py-2 rounded-lg border border-white/20 text-gray-300 text-[10px] font-bold hover:border-brandRed';
+            remove.textContent = 'Retirer';
+            remove.addEventListener('click', () => {
+              cart = cart.filter(entry => entry.id !== item.id);
+              saveCart();
+              renderCart();
+              showNotice('La demande a été retirée du panier.', 'cartNotice');
+            });
+            controls.append(follow, remove);
+            row.append(info, controls);
+            container.appendChild(row);
+          });
+        });
+      };
+
+      if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+          if (!validFields()) return;
+          const request = getRequest();
+          cart.push(request);
+          saveCart();
+          renderCart();
+          showNotice('Votre demande a été ajoutée au panier des commandes.', 'formNotice');
+        });
+      }
+
+      const buildCartMessage = () => {
+        const entries = cart.map((item, index) =>
+          (index + 1) + '. Produit : ' + item.product +
+          ' | Client : ' + item.name +
+          ' | Budget : ' + item.budget +
+          (item.email ? ' | E-mail : ' + item.email : '')
+        ).join('\n');
+        return 'Bonjour DLX LOGISTICS,\n\nJe souhaite obtenir un devis pour les demandes suivantes :\n\n' +
+          entries + '\n\nMerci de me confirmer la disponibilité, le prix détaillé, les délais estimés et les modalités de livraison.';
+      };
+
+      const openCartWhatsApp = () => {
+        if (!cart.length) {
+          showNotice('Ajoutez au moins une demande avant d’envoyer votre panier.', 'cartNotice', true);
+          return;
+        }
+        window.location.href = makeWhatsAppLink(buildCartMessage());
+        showNotice('WhatsApp va s’ouvrir avec votre récapitulatif. Vérifiez-le puis appuyez sur Envoyer.', 'cartNotice');
+      };
+
+      const sendCartBtn = document.getElementById('sendCartBtn');
+      if (sendCartBtn) sendCartBtn.addEventListener('click', openCartWhatsApp);
+
+      const clearCartBtn = document.getElementById('clearCartBtn');
+      if (clearCartBtn) clearCartBtn.addEventListener('click', () => {
+        if (!cart.length) {
+          showNotice('Le panier est déjà vide.', 'cartNotice');
+          return;
+        }
+        cart = [];
+        saveCart();
+        renderCart();
+        showNotice('Le panier a été vidé.', 'cartNotice');
+      });
+
+      if (whatsappForm) {
+        whatsappForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!validFields()) return;
+          if (termsCheckbox && !termsCheckbox.checked) {
+            showNotice('Veuillez accepter les conditions générales avant de continuer.', 'formNotice', true);
+            return;
+          }
+          const current = getRequest();
+          const message = 'Bonjour DLX LOGISTICS,\n\nJe souhaite demander un devis.\n\n' +
+            'Nom : ' + current.name + '\n' +
+            'E-mail : ' + (current.email || 'Non renseigné') + '\n' +
+            'Produit : ' + current.product + '\n' +
+            'Budget : ' + current.budget + '\n\n' +
+            'Merci de me confirmer la disponibilité, le prix détaillé et les modalités de livraison.';
+          window.location.href = makeWhatsAppLink(message);
+          showNotice('WhatsApp va s’ouvrir avec votre demande. Vérifiez le message puis appuyez sur Envoyer.', 'formNotice');
+        });
+      }
+
+      renderCart();
+
+      // 4. Accordéon FAQ
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const ans = item.querySelector('.faq-answer');
+          if (ans) ans.classList.toggle('hidden');
+        });
+      });
+
+      // 5. Gestionnaire Modale Mini-Tuto
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const closeModalConfirm = document.getElementById('closeModalConfirm');
+      const tutoModal = document.getElementById('tutoModal');
+      const modalContent = document.getElementById('modalContent');
+
+      const openModal = () => {
+        document.body.classList.add('modal-open');
+        tutoModal.classList.remove('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+      };
+
+      const closeModal = () => {
+        document.body.classList.remove('modal-open');
+        tutoModal.classList.add('opacity-0', 'pointer-events-none');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+      };
+
+      if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+      if (closeModalConfirm) closeModalConfirm.addEventListener('click', closeModal);
+
+      // 6. Gestionnaire Modale CGU
+      const openTermsModalBtn = document.getElementById('openTermsModalBtn');
+      const openTermsModalFooter = document.getElementById('openTermsModalFooter');
+      const closeTermsModalBtn = document.getElementById('closeTermsModalBtn');
+      const acceptTermsBtn = document.getElementById('acceptTermsBtn');
+      const termsModal = document.getElementById('termsModal');
+      const termsModalContent = document.getElementById('termsModalContent');
+
+      const openTerms = () => {
+        document.body.classList.add('modal-open');
+        termsModal.classList.remove('opacity-0', 'pointer-events-none');
+        termsModalContent.classList.remove('scale-95');
+        termsModalContent.classList.add('scale-100');
+      };
+
+      const closeTerms = () => {
+        document.body.classList.remove('modal-open');
+        termsModal.classList.add('opacity-0', 'pointer-events-none');
+        termsModalContent.classList.remove('scale-100');
+        termsModalContent.classList.add('scale-95');
+      };
+
+      if (openTermsModalBtn) openTermsModalBtn.addEventListener('click', openTerms);
+      if (openTermsModalFooter) openTermsModalFooter.addEventListener('click', openTerms);
+      if (closeTermsModalBtn) closeTermsModalBtn.addEventListener('click', closeTerms);
+      if (acceptTermsBtn) {
+        acceptTermsBtn.addEventListener('click', () => {
+          if (termsCheckbox) termsCheckbox.checked = true;
+          closeTerms();
+        });
+      }
+    });
+  </script>
+
+  <!-- ================= WIDGET D’AIDE ================= -->
+  <div id="helpWidget" class="fixed bottom-5 left-5 z-50">
+    <button id="helpToggle" type="button" aria-expanded="false" aria-controls="helpPanel"
+      class="flex items-center gap-3 rounded-full bg-brandDark text-white px-4 py-3 shadow-2xl border border-brandRed/50 hover:bg-brandObsidian">
+      <span class="flex items-center justify-center w-8 h-8 rounded-full bg-brandRed text-white font-bold text-sm">?</span>
+      <span class="text-xs font-bold uppercase tracking-wide">Besoin d’aide ?</span>
+    </button>
+    <section id="helpPanel" class="hidden absolute bottom-16 left-0 w-[min(90vw,360px)] rounded-2xl bg-white border border-gray-200 shadow-2xl overflow-hidden" aria-label="Centre d’aide">
+      <div class="bg-brandDark text-white p-5">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class="text-brandRed text-[10px] font-bold uppercase tracking-widest">Assistance DLX</p>
+            <h2 class="font-montserrat font-extrabold text-lg mt-1">Comment pouvons-nous aider ?</h2>
+          </div>
+          <button id="helpClose" type="button" class="w-8 h-8 rounded-full border border-white/20 hover:bg-white/10" aria-label="Fermer">×</button>
+        </div>
+        <p class="text-xs text-gray-300 mt-2">Quelques solutions aux difficultés les plus fréquentes.</p>
+      </div>
+      <div class="p-4 max-h-[55vh] overflow-y-auto space-y-3 text-xs text-gray-700">
+        <details class="rounded-xl border border-gray-200 p-3" open>
+          <summary class="font-bold cursor-pointer text-brandDark">WhatsApp ne s’ouvre pas</summary>
+          <p class="mt-2 leading-relaxed">Installez ou mettez à jour WhatsApp, puis vérifiez que votre compte est connecté. Sur ordinateur, essayez WhatsApp Web. Vous pouvez aussi envoyer votre demande manuellement au <strong>034 02 992 01</strong>.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 p-3">
+          <summary class="font-bold cursor-pointer text-brandDark">Le message WhatsApp est vide</summary>
+          <p class="mt-2 leading-relaxed">Revenez sur le site, copiez les informations de votre demande, puis ouvrez WhatsApp et envoyez-les au <strong>034 02 992 01</strong>. Vérifiez le texte avant l’envoi.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 p-3">
+          <summary class="font-bold cursor-pointer text-brandDark">Mon panier semble vide</summary>
+          <p class="mt-2 leading-relaxed">Utilisez le même navigateur et le même appareil que lors de l’ajout des demandes. Le panier est enregistré localement et n’est pas synchronisé entre appareils. Évitez d’effacer les données du navigateur.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 p-3">
+          <summary class="font-bold cursor-pointer text-brandDark">Je n’arrive pas à ajouter une demande</summary>
+          <p class="mt-2 leading-relaxed">Vérifiez les champs obligatoires : nom, budget et description du produit. Si le problème persiste, actualisez la page et réessayez.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 p-3">
+          <summary class="font-bold cursor-pointer text-brandDark">Je n’ai pas reçu de confirmation</summary>
+          <p class="mt-2 leading-relaxed">L’ouverture de WhatsApp ne signifie pas que la demande a été envoyée. Appuyez sur « Envoyer » dans WhatsApp, puis attendez la réponse de DLX LOGISTICS.</p>
+        </details>
+        <details class="rounded-xl border border-gray-200 p-3">
+          <summary class="font-bold cursor-pointer text-brandDark">Comment demander le suivi de ma commande ?</summary>
+          <p class="mt-2 leading-relaxed">Indiquez votre nom, votre numéro de téléphone et le nom ou la description de votre colis, puis contactez-nous sur WhatsApp. Une demande de mise à jour est prévue tous les 7 jours.</p>
+        </details>
+        <a href="https://wa.me/261340299201?text=Bonjour%20DLX%20LOGISTICS%2C%20j%27ai%20besoin%20d%27aide%20avec%20votre%20site." target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-center w-full rounded-xl bg-brandRed text-white font-bold py-3 hover:bg-brandRedHover">Contacter l’assistance WhatsApp</a>
+      </div>
+    </section>
+  </div>
+\n</body>
+</html>
