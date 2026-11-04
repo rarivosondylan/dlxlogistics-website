@@ -2,7 +2,7 @@
 <html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>DLX LOGISTICS | Conciergerie Privée & Logistics sur-mesure Antananarivo</title>
   
   <!-- Tailwind CSS CDN -->
@@ -59,7 +59,9 @@
       background-size: 60px 60px, 60px 60px, 20px 20px;
       background-position: 0 0, 0 0, 0 0;
       position: relative;
-      overflow-x: hidden;
+      width:100%; max-width:100%; margin:0;
+      overflow-x:clip;
+      overscroll-behavior-x:none;
     }
 
     /* Fluid Glowing Venom Symbiote Bubbles */
@@ -205,7 +207,7 @@
 
 
     /* Responsive polish: phone, tablet, laptop and wide screens */
-    html { scroll-padding-top: 6.5rem; }
+    html { width:100%; max-width:100%; overflow-x:clip; scroll-padding-top:6.5rem; }
     img, video, iframe { max-width: 100%; }
     button, a { -webkit-tap-highlight-color: transparent; }
     input, select, textarea { max-width: 100%; min-width: 0; }
@@ -213,7 +215,11 @@
       header > div:first-child { min-height: 4.5rem; height: auto; }
     }
     @media (max-width: 639px) {
+      html, body { width:100%; max-width:100%; overflow-x:clip; }
       body { font-size: 14px; }
+      input, select, textarea { font-size:16px !important; }
+      .venom-bubble-red, .venom-bubble-dark { animation:none !important; filter:blur(55px); }
+      .white-venom-card:hover, .venom-glass-card:hover { transform:none; }
       #hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }
       #hero h1 { font-size: clamp(2rem, 9vw, 2.75rem); line-height: 1.12; }
       #hero p { font-size: .9rem; line-height: 1.65; }
@@ -261,7 +267,7 @@
         <a href="#informations-legales" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Informations légales</a>
         <a href="#suivi" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Suivi Colis</a>
         <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="relative px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">
-          Panier <span id="navCartCount" class="ml-1 inline-flex min-w-5 h-5 px-1 items-center justify-center rounded-full bg-brandRed text-white text-[10px]">0</span>
+          Panier <span id="navCartCountTop" class="ml-1 inline-flex min-w-5 h-5 px-1 items-center justify-center rounded-full bg-brandRed text-white text-[10px]">0</span>
         </a>
         <a href="#faq" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">FAQ</a>
       </nav>
@@ -494,7 +500,7 @@
           <p class="mt-2 text-sm text-gray-400 max-w-xl">Retrouvez toutes vos demandes dans un espace dédié, plus clair et plus facile à gérer. Le panier s’ouvre dans un nouvel onglet.</p>
         </div>
         <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center px-6 py-4 rounded-xl bg-brandRed text-white text-xs font-bold uppercase tracking-wide hover:bg-brandRedHover shadow-lg shadow-brandRed/20">
-          Ouvrir mon panier <span id="navCartCount" class="ml-2 inline-flex min-w-6 h-6 px-1 items-center justify-center rounded-full bg-white text-brandRed text-[10px]">0</span>
+          Ouvrir mon panier <span id="navCartCountBottom" class="ml-2 inline-flex min-w-6 h-6 px-1 items-center justify-center rounded-full bg-white text-brandRed text-[10px]">0</span>
         </a>
       </div>
       <p class="mt-4 text-[10px] leading-relaxed text-gray-500">Les demandes sont conservées dans le stockage local de ce navigateur. Elles ne sont pas automatiquement partagées entre appareils.</p>
@@ -856,9 +862,13 @@
       const renderCart = () => {
         const containers = ['cartItems'];
         const count = cart.length;
-        ['navCartCount', 'cartCount', 'cartSectionCount'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.textContent = count + (count > 1 ? ' demandes' : ' demande');
+        ['navCartCountTop', 'navCartCountBottom'].forEach(id => {
+          const badge = document.getElementById(id);
+          if (badge) badge.textContent = String(count);
+        });
+        ['cartCount', 'cartSectionCount'].forEach(id => {
+          const label = document.getElementById(id);
+          if (label) label.textContent = count + (count > 1 ? ' demandes' : ' demande');
         });
 
         containers.forEach(id => {
