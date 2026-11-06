@@ -925,27 +925,6 @@ header.fixed nav a{white-space:nowrap}
 </style>
 </head>
 <body class="font-sans bg-white text-brandDark antialiased selection:bg-brandRed selection:text-white">
-<div id="dlxAuthGate" class="dlx-auth-gate">
-  <div class="dlx-auth-shell">
-    <div class="dlx-auth-brand"><span>DLX</span><b>LOGISTICS</b></div>
-    <div class="dlx-auth-kicker"><i></i> PRIVATE CONCIERGE & SOURCING</div>
-    <h1 id="dlxAuthTitle">Accéder à votre espace</h1>
-    <p id="dlxAuthSubtitle">Connectez-vous pour continuer sur DLX LOGISTICS.</p>
-    <form id="dlxAuthForm" autocomplete="on">
-      <label for="dlxAuthEmail">Adresse e-mail</label>
-      <input id="dlxAuthEmail" name="email" type="email" autocomplete="username" placeholder="nom@exemple.com" required>
-      <label for="dlxAuthPassword">Mot de passe</label>
-      <input id="dlxAuthPassword" name="password" type="password" autocomplete="current-password" placeholder="Votre mot de passe" minlength="8" required>
-      <button id="dlxAuthSubmit" type="submit">Se connecter <span>→</span></button>
-      <p id="dlxAuthMessage" role="status" aria-live="polite"></p>
-    </form>
-    <div class="dlx-auth-switch">
-      <span id="dlxAuthSwitchText">Nouveau sur DLX LOGISTICS ?</span>
-      <button type="button" id="dlxAuthSwitch">Créer un compte</button>
-    </div>
-    <p class="dlx-auth-footnote">Accès personnel · Session mémorisée sur cet appareil</p>
-  </div>
-</div>
 <nav class="dlx-chapter-rail" aria-label="Navigation par chapitre">
   <span class="dlx-chapter-track" aria-hidden="true"><i></i></span>
   <a href="#hero" class="is-active" aria-label="Accueil" title="Accueil"><span>01</span></a>
@@ -2364,6 +2343,7 @@ body:not(.dlx-dark) #hero.dlx-madagascar-hero::before{background-image:url("data
   const label = document.getElementById('dlxRatingLabel');
   const notice = document.getElementById('dlxReviewNotice');
   const read = () => { try { const value = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(value) ? value : []; } catch (_) { return []; } };
+  setNotice('Les avis sont enregistrés localement sur cet appareil.', 'is-info');
   const choose = value => {
     rating = value;
     stars.forEach((star, index) => {
@@ -2435,179 +2415,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-<style id="dlx-auth-theme-language">
-/* DLX access screen — integrated into the existing red / charcoal identity */
-.dlx-auth-gate{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow-y:auto;padding:28px 18px;background:radial-gradient(ellipse at 18% 12%,rgba(225,29,50,.16),transparent 35%),radial-gradient(ellipse at 85% 88%,rgba(225,29,50,.10),transparent 34%),linear-gradient(135deg,#101217,#191a20 58%,#101217);color:#f7f7f8}
-body:not(.dlx-authenticated)>:not(#dlxAuthGate){display:none!important}
-body.dlx-authenticated #dlxAuthGate{display:none}
-.dlx-auth-shell{width:min(100%,430px);padding:clamp(26px,5vw,42px);border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(145deg,rgba(35,36,43,.97),rgba(19,20,25,.98));box-shadow:0 28px 90px rgba(0,0,0,.38),0 0 45px rgba(220,38,38,.08)}
-.dlx-auth-brand{font:900 21px Montserrat,sans-serif;letter-spacing:.035em}.dlx-auth-brand b{color:#ef3348;margin-left:5px}
-.dlx-auth-kicker{display:flex;align-items:center;gap:8px;margin-top:29px;color:#aeb1ba;font-size:9px;font-weight:800;letter-spacing:.19em}
-.dlx-auth-kicker i{width:7px;height:7px;border-radius:50%;background:#ef3348;box-shadow:0 0 10px #ef3348}
-.dlx-auth-shell h1{margin:13px 0 7px;font:800 clamp(25px,5vw,31px)/1.15 Montserrat,sans-serif;letter-spacing:-.04em}
-.dlx-auth-shell>p{color:#aeb1ba;font-size:12px;line-height:1.65}
-#dlxAuthForm{display:grid;gap:9px;margin-top:26px}
-#dlxAuthForm label{margin-top:7px;color:#d8d9de;font-size:10px;font-weight:800;letter-spacing:.06em}
-#dlxAuthForm input{width:100%;height:48px;padding:0 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#111319;color:#fff;font-size:13px;outline:none}
-#dlxAuthForm input:focus{border-color:#ef3348;box-shadow:0 0 0 3px rgba(239,51,72,.13)}
-#dlxAuthForm input::placeholder{color:#777c87}
-#dlxAuthSubmit{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding:14px 16px;border-radius:10px;background:linear-gradient(100deg,#ef3348,#bd1d32);color:#fff;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-#dlxAuthSubmit span{font-size:19px}
-#dlxAuthMessage{min-height:17px;color:#ff8792;font-size:11px;line-height:1.5}
-.dlx-auth-switch{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;color:#aeb1ba;font-size:11px}
-.dlx-auth-switch button{color:#ff6475;font-weight:800}
-.dlx-auth-footnote{margin-top:25px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);color:#858995!important;font-size:9px!important;letter-spacing:.04em}
-.dlx-theme-toggle{position:fixed!important;z-index:2000!important;top:94px!important;right:18px!important;left:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;gap:8px!important;padding:9px 13px!important;border:1px solid rgba(220,38,38,.25)!important;border-radius:999px!important;background:rgba(255,255,255,.92)!important;color:#252a33!important;font-size:10px!important;font-weight:800!important;box-shadow:0 5px 18px rgba(0,0,0,.09)!important;backdrop-filter:blur(12px)}
-.dlx-theme-toggle:hover{transform:translateY(-2px)!important}
-body.dlx-dark .dlx-theme-toggle{background:rgba(29,31,38,.94)!important;color:#f4f5f7!important;border-color:rgba(239,48,56,.38)!important}
-@media(max-width:700px){.dlx-theme-toggle{top:auto!important;right:10px!important;bottom:14px!important;padding:9px 11px!important}}
-/* Consistent dark palette for page surfaces and text, including previously hard-coded light cards */
-body.dlx-dark{background-color:#101217!important;color:#eef0f4!important;color-scheme:dark}
-body.dlx-dark .white-venom-card,body.dlx-dark .dlx-review-entry,body.dlx-dark .dlx-neon-core{background:#20232b!important;border-color:#3b404b!important;color:#f1f2f5!important}
-body.dlx-dark .white-venom-card h1,body.dlx-dark .white-venom-card h2,body.dlx-dark .white-venom-card h3,body.dlx-dark .white-venom-card h4,body.dlx-dark .white-venom-card strong,body.dlx-dark .dlx-review-entry strong{color:#f5f6f8!important}
-body.dlx-dark .white-venom-card p,body.dlx-dark .white-venom-card span,body.dlx-dark .dlx-review-entry p{color:#c4c8d1}
-body.dlx-dark section:not(#hero):not(.bg-brandDark){background-color:#171a21!important;color:#eef0f4!important}
-body.dlx-dark section h1,body.dlx-dark section h2,body.dlx-dark section h3,body.dlx-dark section h4{color:#f2f3f6}
-body.dlx-dark section p,body.dlx-dark section li{color:#c6cad2}
-body.dlx-dark input,body.dlx-dark textarea,body.dlx-dark select{background:#20232b!important;color:#f4f5f7!important;border-color:#454a55!important}
-body.dlx-dark .dlx-chapter-rail{background:rgba(27,29,36,.92)!important;border-color:#414550!important}
-body.dlx-dark .dlx-chapter-rail a{background:#252832!important;border-color:#626775!important}
-body.dlx-dark .dlx-chapter-rail a span{background:#252832!important;color:#ff7b89!important}
-body.dlx-dark #hero.dlx-madagascar-hero{background:radial-gradient(ellipse at 52% 48%,rgba(220,38,38,.11),transparent 48%),linear-gradient(120deg,#111318,#191b21 48%,#101217)!important;color:#f4f4f6}
-body.dlx-dark #hero .dlx-hero-copy h1,body.dlx-dark #hero .dlx-route-center strong{color:#f7f7f8!important}
-body.dlx-dark .dlx-neon-stage{background:radial-gradient(ellipse at 50% 52%,#20232b 0%,#171a21 68%,#14161c 100%)!important}
-body.dlx-dark .dlx-neon-core{background:rgba(30,33,41,.88)!important}
-body.dlx-dark .dlx-core-wordmark{color:#f4f5f7!important}
-body.dlx-dark .dlx-core-tagline,body.dlx-dark .dlx-core-topline{color:#b7bbc5!important}
-body.dlx-dark .dlx-chapter-rail{box-shadow:0 8px 28px rgba(0,0,0,.25)}
-body:not(.dlx-dark){color-scheme:light}
 
-/* Reference-inspired dual pill theme selector */
-.dlx-theme-switch{
-  position:fixed!important;z-index:2000!important;top:22px!important;right:clamp(14px,3vw,42px)!important;left:auto!important;
-  display:flex!important;align-items:center!important;gap:10px!important;padding:5px!important;
-  border-radius:999px!important;background:rgba(225,225,225,.48)!important;
-  -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
-}
-.dlx-theme-option{
-  position:relative!important;isolation:isolate;display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  gap:10px!important;min-height:54px!important;min-width:174px!important;padding:8px 20px!important;
-  border:1px solid rgba(255,255,255,.95)!important;border-radius:999px!important;
-  background:linear-gradient(145deg,#fff,#f5f5f5)!important;color:#202124!important;
-  box-shadow:inset 0 0 0 4px rgba(185,185,185,.42),0 7px 15px rgba(0,0,0,.12)!important;
-  font-family:inherit!important;font-size:13px!important;font-weight:600!important;line-height:1.1!important;letter-spacing:.01em!important;white-space:nowrap!important;
-  cursor:pointer!important;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease!important;
-}
-.dlx-theme-option:hover{transform:translateY(-2px)!important;box-shadow:inset 0 0 0 4px rgba(185,185,185,.5),0 11px 20px rgba(0,0,0,.16)!important}
-.dlx-theme-option[aria-pressed="true"][data-theme-choice="light"]{background:#fff!important;color:#151515!important;border-color:#fff!important;box-shadow:inset 0 0 0 4px #d1d1d1,0 8px 18px rgba(0,0,0,.14)!important}
-.dlx-theme-option[data-theme-choice="dark"]{background:linear-gradient(145deg,#353535,#252525)!important;color:#fff!important;border-color:#222!important;box-shadow:inset 0 0 0 4px rgba(205,205,205,.58),0 8px 18px rgba(0,0,0,.2)!important}
-.dlx-theme-option[aria-pressed="true"][data-theme-choice="dark"]{background:linear-gradient(145deg,#383838,#242424)!important;box-shadow:inset 0 0 0 4px #bcbcbc,0 9px 20px rgba(0,0,0,.24)!important}
-.dlx-theme-icon{display:grid!important;place-items:center!important;width:30px!important;height:30px!important;flex:0 0 30px!important;
-  border-radius:50%!important;background:transparent!important;color:inherit!important;font-size:29px!important;line-height:1!important;
-  box-shadow:none!important}
-.dlx-theme-text{display:inline!important;font-size:13px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;white-space:nowrap!important}
-body.dlx-dark .dlx-theme-switch{background:rgba(30,30,30,.46)!important}
-body.dlx-dark .dlx-theme-option[data-theme-choice="light"]{background:linear-gradient(145deg,#fff,#f4f4f4)!important;color:#222!important;border-color:#fff!important}
-body.dlx-dark .dlx-theme-option[data-theme-choice="dark"]{background:linear-gradient(145deg,#383838,#252525)!important;color:#fff!important;border-color:#222!important}
-@media(max-width:700px){
- .dlx-theme-switch{top:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;right:50%!important;left:auto!important;transform:translateX(50%)!important;
-   width:max-content!important;max-width:calc(100vw - 20px)!important;gap:6px!important;padding:4px!important}
- .dlx-theme-option{min-width:0!important;min-height:48px!important;gap:7px!important;padding:7px 12px!important;flex:1 1 auto!important}
- .dlx-theme-icon{width:25px!important;height:25px!important;flex-basis:25px!important;font-size:24px!important}
- .dlx-theme-text{font-size:11px!important}
-}
-@media(max-width:380px){.dlx-theme-option{gap:5px!important;padding:7px 9px!important}.dlx-theme-text{font-size:10px!important}}
-@media(prefers-reduced-motion:reduce){.dlx-theme-option{transition:none!important}}
 
-</style>
-<script>
-/* Account demo: local to this browser. For production authentication, connect a server/auth provider. */
-(() => {
-  const USERS_KEY = 'dlx_local_accounts_v1';
-  const SESSION_KEY = 'dlx_local_session_v1';
-  const gate = document.getElementById('dlxAuthGate');
-  const form = document.getElementById('dlxAuthForm');
-  if (!gate || !form) return;
-  const emailInput = document.getElementById('dlxAuthEmail');
-  const passwordInput = document.getElementById('dlxAuthPassword');
-  const message = document.getElementById('dlxAuthMessage');
-  const submit = document.getElementById('dlxAuthSubmit');
-  const switchBtn = document.getElementById('dlxAuthSwitch');
-  const title = document.getElementById('dlxAuthTitle');
-  const subtitle = document.getElementById('dlxAuthSubtitle');
-  const switchText = document.getElementById('dlxAuthSwitchText');
-  let creating = false;
-  const readUsers = () => { try { return JSON.parse(localStorage.getItem(USERS_KEY) || '{}') || {}; } catch (_) { return {}; } };
-  const createPersonalId = users => {
-    const used = new Set(Object.values(users).map(account => account?.personalId).filter(Boolean));
-    let id;
-    do {
-      const bytes = crypto.getRandomValues(new Uint8Array(4));
-      id = 'DLX-' + [...bytes].map(value => value.toString(16).padStart(2,'0')).join('').toUpperCase();
-    } while (used.has(id));
-    return id;
-  };
-  const derivePassword = async (value, saltHex) => {
-    if (!window.crypto?.subtle) throw new Error('SECURE_STORAGE_UNAVAILABLE');
-    const salt = saltHex ? Uint8Array.from(saltHex.match(/.{1,2}/g).map(x => parseInt(x,16))) : crypto.getRandomValues(new Uint8Array(16));
-    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(value), 'PBKDF2', false, ['deriveBits']);
-    const bits = await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'}, key, 256);
-    const hash = [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2,'0')).join('');
-    return {hash, salt:[...salt].map(b => b.toString(16).padStart(2,'0')).join('')};
-  };
-  const enter = email => {
-    try { localStorage.setItem(SESSION_KEY, email); } catch (_) {}
-    document.body.classList.add('dlx-authenticated');
-    gate.setAttribute('aria-hidden','true');
-  };
-  try {
-    const session = localStorage.getItem(SESSION_KEY);
-    if (session && readUsers()[session]) enter(session);
-  } catch (_) {}
-  const setMode = value => {
-    creating = value;
-    title.textContent = creating ? 'Créer votre espace' : 'Accéder à votre espace';
-    subtitle.textContent = creating ? 'Créez vos identifiants pour accéder à DLX LOGISTICS.' : 'Connectez-vous pour continuer sur DLX LOGISTICS.';
-    submit.innerHTML = creating ? 'Créer mon compte <span>→</span>' : 'Se connecter <span>→</span>';
-    switchText.textContent = creating ? 'Vous avez déjà un compte ?' : 'Nouveau sur DLX LOGISTICS ?';
-    switchBtn.textContent = creating ? 'Se connecter' : 'Créer un compte';
-    passwordInput.autocomplete = creating ? 'new-password' : 'current-password';
-    passwordInput.value = '';
-    message.textContent = '';
-  };
-  switchBtn.addEventListener('click', () => setMode(!creating));
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    message.textContent = '';
-    const email = emailInput.value.trim().toLowerCase();
-    const password = passwordInput.value;
-    if (!email || password.length < 8) { message.textContent = 'Utilisez une adresse e-mail valide et un mot de passe de 8 caractères minimum.'; return; }
-    submit.disabled = true;
-    try {
-      const users = readUsers();
-      const derived = await derivePassword(password, creating ? null : users[email]?.salt);
-      if (creating) {
-        if (users[email]) { message.textContent = 'Cette adresse e-mail possède déjà un compte. Connectez-vous.'; return; }
-        users[email] = { personalId: createPersonalId(users), passwordHash: derived.hash, salt: derived.salt, createdAt: Date.now() };
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-      } else {
-        if (!users[email] || users[email].passwordHash !== derived.hash) { message.textContent = 'Adresse e-mail ou mot de passe incorrect.'; return; }
-      }
-      enter(email);
-    } catch (error) {
-      message.textContent = error.message === 'SECURE_STORAGE_UNAVAILABLE'
-        ? 'Connexion indisponible dans ce navigateur. Utilisez un navigateur récent en HTTPS.'
-        : 'Impossible d’enregistrer ce compte sur cet appareil.';
-    } finally { submit.disabled = false; }
-  });
-  window.dlxLogout = () => {
-    try { localStorage.removeItem(SESSION_KEY); } catch (_) {}
-    document.body.classList.remove('dlx-authenticated');
-    gate.removeAttribute('aria-hidden');
-    setMode(false);
-  };
-})();
-</script>
 
 <style id="dlx-compact-floating-theme-control">
   /* Small, fixed theme control: stays in its own corner while the page scrolls. */
