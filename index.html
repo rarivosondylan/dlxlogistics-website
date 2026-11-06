@@ -805,9 +805,147 @@ body:not(.dlx-dark) .dlx-route-center strong { color:#242930; }
 body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.20); }
 
 </style>
+<style id="dlx-responsive-system">
+
+/* ==========================================================
+   DLX RESPONSIVE LAYOUT SYSTEM — iPhone / Tablet / Desktop
+   Consistent gutters, rhythm, alignment and touch targets
+   ========================================================== */
+:root{
+  --dlx-gutter: clamp(16px, 4vw, 64px);
+  --dlx-content: 1280px;
+  --dlx-section-y: clamp(48px, 6vw, 88px);
+  --dlx-card-radius: 20px;
+  --dlx-space: clamp(14px, 2vw, 24px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;max-width:100%;scroll-padding-top:90px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;max-width:100%;min-width:320px;margin:0;overflow-x:hidden}
+img,video,svg,canvas{max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;max-width:100%}
+button,a,[role="button"]{-webkit-tap-highlight-color:transparent}
+
+/* A single shared page gutter at every breakpoint */
+header.fixed>div,
+header.fixed nav#mobileMenu>div,
+body>div>div.max-w-7xl,
+section>.max-w-7xl,
+section>.max-w-5xl,
+section>.max-w-4xl,
+section>.max-w-3xl,
+footer>.max-w-7xl,
+.dlx-hero-inner,
+.dlx-reviews-layout{
+  width:min(calc(100% - (var(--dlx-gutter) * 2)),var(--dlx-content))!important;
+  max-width:var(--dlx-content)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Balanced vertical rhythm */
+section:not(#hero):not(#quoteSummary):not(#dlx-reviews){
+  padding-top:var(--dlx-section-y)!important;
+  padding-bottom:var(--dlx-section-y)!important;
+}
+#hero{padding-top:clamp(84px,10vw,120px)!important;padding-bottom:clamp(48px,7vw,90px)!important}
+#quoteSummary{margin-top:clamp(18px,3vw,32px)!important;margin-bottom:clamp(18px,3vw,32px)!important}
+#dlx-reviews{padding-left:var(--dlx-gutter)!important;padding-right:var(--dlx-gutter)!important}
+section .text-center.max-w-3xl{margin-bottom:clamp(28px,4vw,48px)!important}
+
+/* Keep grids and flex rows from forcing horizontal scroll */
+section .grid,footer .grid{min-width:0;align-items:stretch}
+section .grid>* ,footer .grid>*{min-width:0}
+section .flex>*{min-width:0}
+section p,section li,section h1,section h2,section h3,footer p{overflow-wrap:anywhere}
+
+/* Consistent card language */
+.venom-glass-card,
+#services .grid>*,
+#faq .grid>*,
+#comment-ca-marche .grid>*,
+#panier-commandes .grid>*,
+#informations-legales .grid>*{
+  border-radius:var(--dlx-card-radius)!important;
+}
+input:not([type=checkbox]):not([type=radio]),select,textarea{
+  min-height:46px;border-radius:12px;max-width:100%;
+}
+button,a.inline-flex,a[class*="rounded"]{touch-action:manipulation}
+
+/* Header: clean spacing without squeezing the logo */
+header.fixed{padding-top:env(safe-area-inset-top);}
+header.fixed>div{gap:clamp(10px,2vw,24px)!important}
+header.fixed nav a{white-space:nowrap}
+
+/* Tablet */
+@media(min-width:640px) and (max-width:1023px){
+  :root{--dlx-gutter:clamp(22px,4vw,36px);--dlx-section-y:clamp(48px,6vw,68px)}
+  #hero{padding-top:100px!important}
+  section .grid{gap:clamp(16px,2.4vw,24px)!important}
+}
+
+/* Phones, including narrow iPhones */
+@media(max-width:639px){
+  :root{--dlx-gutter:16px;--dlx-section-y:46px;--dlx-card-radius:16px}
+  html{scroll-padding-top:76px}
+  header.fixed>div{height:68px!important}
+  header.fixed .max-w-7xl{width:calc(100% - 28px)!important}
+  #hero{padding-top:88px!important;padding-bottom:44px!important}
+  #hero .dlx-hero-inner{width:calc(100% - 32px)!important}
+  section:not(#hero):not(#quoteSummary):not(#dlx-reviews){padding-top:46px!important;padding-bottom:46px!important}
+  section .text-center.max-w-3xl{margin-bottom:28px!important}
+  section h1{font-size:clamp(30px,9vw,46px)!important;line-height:1.08!important}
+  section h2{font-size:clamp(23px,6.5vw,32px)!important;line-height:1.15!important}
+  section h3{line-height:1.25!important}
+  section p{line-height:1.65}
+  section .grid{gap:14px!important}
+  section .flex.flex-wrap{gap:10px!important}
+  section button,section a[class*="px-"],footer a{min-height:44px}
+  #dlx-reviews{padding:42px 16px!important}
+  #dlx-reviews .dlx-reviews-hero{grid-template-columns:1fr!important;gap:22px!important;padding:24px 20px!important;border-radius:18px!important}
+  #dlx-reviews .dlx-review-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  #dlx-reviews .dlx-review-metric{padding:14px 8px!important;border-radius:12px!important}
+  footer{padding-top:42px!important;padding-bottom:calc(42px + env(safe-area-inset-bottom))!important}
+  footer>.max-w-7xl{gap:26px!important}
+  table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dlx-chapter-rail{display:none!important}
+}
+
+/* Large desktop: use the canvas without stretching text lines */
+@media(min-width:1440px){
+  :root{--dlx-gutter:clamp(56px,5vw,88px);--dlx-content:1320px}
+  section .text-center.max-w-3xl{max-width:760px!important}
+}
+
+/* Respect reduced-motion preferences */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+</style>
 </head>
 <body class="font-sans bg-white text-brandDark antialiased selection:bg-brandRed selection:text-white">
-
+<div id="dlxAuthGate" class="dlx-auth-gate">
+  <div class="dlx-auth-shell">
+    <div class="dlx-auth-brand"><span>DLX</span><b>LOGISTICS</b></div>
+    <div class="dlx-auth-kicker"><i></i> PRIVATE CONCIERGE & SOURCING</div>
+    <h1 id="dlxAuthTitle">Accéder à votre espace</h1>
+    <p id="dlxAuthSubtitle">Connectez-vous pour continuer sur DLX LOGISTICS.</p>
+    <form id="dlxAuthForm" autocomplete="on">
+      <label for="dlxAuthEmail">Adresse e-mail</label>
+      <input id="dlxAuthEmail" name="email" type="email" autocomplete="username" placeholder="nom@exemple.com" required>
+      <label for="dlxAuthPassword">Mot de passe</label>
+      <input id="dlxAuthPassword" name="password" type="password" autocomplete="current-password" placeholder="Votre mot de passe" minlength="8" required>
+      <button id="dlxAuthSubmit" type="submit">Se connecter <span>→</span></button>
+      <p id="dlxAuthMessage" role="status" aria-live="polite"></p>
+    </form>
+    <div class="dlx-auth-switch">
+      <span id="dlxAuthSwitchText">Nouveau sur DLX LOGISTICS ?</span>
+      <button type="button" id="dlxAuthSwitch">Créer un compte</button>
+    </div>
+    <p class="dlx-auth-footnote">Accès personnel · Session mémorisée sur cet appareil</p>
+  </div>
+</div>
 <nav class="dlx-chapter-rail" aria-label="Navigation par chapitre">
   <span class="dlx-chapter-track" aria-hidden="true"><i></i></span>
   <a href="#hero" class="is-active" aria-label="Accueil" title="Accueil"><span>01</span></a>
@@ -846,8 +984,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
         <a href="#suivi" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">Suivi Colis</a>
         <a href="#faq" class="px-3 py-3 rounded-lg hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap">FAQ</a>
       </nav>
-
-      <!-- Menu compact pour téléphone et tablette -->
+<!-- Menu compact pour téléphone et tablette -->
       <button id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu"
         class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-white/20 text-white hover:bg-white/10"
         aria-label="Ouvrir le menu">
@@ -855,7 +992,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
       </button>
 
       <!-- Accès rapide au panier -->
-      <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer"
+      <a href="cart.html"
          class="dlx-header-cart hidden sm:inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-xl font-bold text-[10px] sm:text-xs uppercase tracking-wider transition-all">
         <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M3 3h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6"/>
@@ -863,6 +1000,13 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
         </svg>
         <span>Panier</span>
       </a>
+      <div id="dlxUtilityControls" class="dlx-utility-controls" aria-label="Préférences et compte">
+        <button id="dlxSettingsToggle" class="dlx-settings-toggle" type="button" aria-expanded="false" aria-controls="dlxSettingsPanel">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2.4v-.2a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.56-1.03H6v-2.4h.9A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 12.73 5.2V5h2.4v.2a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1.03h.2v2.4h-.2A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+  <span>Paramètres</span>
+</button>
+        <button class="dlx-theme-toggle" id="dlxThemeToggle" type="button" aria-label="Activer le mode sombre" title="Activer le mode sombre" aria-pressed="false"><svg class="dlx-utility-icon dlx-theme-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.6 8.6 0 1 0 20.2 15.2Z"/></svg><span class="dlx-theme-label">Mode sombre</span></button>
+      </div>
     </div>
     <nav id="mobileMenu" class="hidden xl:hidden border-t border-white/10 bg-brandDark px-4 py-3">
       <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] font-semibold uppercase tracking-wide text-gray-200">
@@ -891,7 +1035,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
 
   <!-- ================= SECTION HERO ================= -->
   <section id="hero" class="dlx-madagascar-hero relative overflow-hidden">
-  <button class="dlx-theme-toggle" id="dlxThemeToggle" type="button" aria-label="Activer le mode sombre" aria-pressed="false"><span class="dlx-theme-icon">☾</span><span class="dlx-theme-text">Mode sombre</span></button>
+  
   <div class="dlx-hero-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="dlx-hero-copy">
       <div class="dlx-eyebrow"><span class="dlx-live-dot"></span> MADAGASCAR CONNECTÉ <i></i></div>
@@ -988,6 +1132,12 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
             </div>
 
             <div>
+              <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Numéro de téléphone *</label>
+              <input type="tel" id="phone" required autocomplete="tel" inputmode="tel" placeholder="Ex: 034 12 345 67"
+                class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 text-xs" />
+            </div>
+
+            <div>
               <label for="budget" class="block text-xs font-bold uppercase tracking-wider text-brandRed mb-1.5">Budget estimé (Ar / €) *</label>
               <input type="text" id="budget" required placeholder="Ex: 500 000 Ar" 
                 class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 text-xs" />
@@ -1004,6 +1154,32 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
             <textarea id="product" rows="4" required placeholder="Décrivez l'article recherché (caractéristiques, références ou liens éventuels)..." 
               class="w-full px-4 py-3 rounded-xl border border-brandRed/30 focus:border-brandRed focus:ring-1 focus:ring-brandRed outline-none bg-brandDark text-white placeholder-gray-500 resize-none text-xs"></textarea>
           </div>
+
+          <!-- Récapitulatif client prêt à copier -->
+          <section id="quoteSummary" class="rounded-2xl border border-brandRed/35 bg-[#171b24] p-5 sm:p-6 text-white shadow-lg" aria-live="polite">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+              <div>
+                <p class="text-[10px] uppercase tracking-[.2em] font-extrabold text-brandRed">Votre demande</p>
+                <h3 class="font-montserrat text-base font-extrabold text-white mt-1">Récapitulatif du devis</h3>
+              </div>
+              <button type="button" id="copyQuoteSummary" class="rounded-lg bg-brandRed hover:bg-brandRedHover text-white px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider">Copier le récapitulatif</button>
+            </div>
+            <p class="text-xs text-gray-400 mb-3">Ce récapitulatif se met à jour automatiquement avec les informations saisies.</p>
+            <div class="rounded-xl border border-amber-400/25 bg-amber-400/10 p-3 mb-3 text-xs leading-relaxed text-amber-100">
+              <strong class="block text-amber-300 mb-1">En cas de problème avec WhatsApp</strong>
+              Normalement, le bouton « Envoyer la demande sur WhatsApp » ouvre WhatsApp avec votre message déjà préparé : il vous suffit de vérifier puis d’appuyer sur « Envoyer ». Utilisez « Copier le récapitulatif » uniquement si WhatsApp ne s’ouvre pas ou si le message prérempli n’apparaît pas. Collez alors ce texte dans une conversation avec le <strong>034 02 992 01</strong>, puis envoyez-le manuellement.
+            </div>
+            <pre id="quoteSummaryText" class="whitespace-pre-wrap break-words rounded-xl border border-white/10 bg-black/25 p-4 text-xs leading-relaxed text-gray-100 font-sans">Bonjour DLX LOGISTICS,
+
+Je souhaite demander un devis.
+
+Nom : À compléter
+Téléphone : À compléter
+E-mail : Non renseigné
+Produit : À compléter
+Budget estimé : À compléter</pre>
+            <p id="quoteCopyNotice" class="mt-3 text-xs text-green-400" role="status" aria-live="polite"></p>
+          </section>
 
           <!-- Case à cocher obligatoire des CGU -->
           <div class="pt-1">
@@ -1029,14 +1205,11 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
               Ajouter cette demande au panier
             </button>
             <p id="formNotice" class="mt-3 text-xs text-brandRed" role="status" aria-live="polite"></p>
-            <a href="#panier-commandes" class="mt-3 inline-flex text-xs font-bold text-brandRed underline">Ouvrir le panier des commandes</a>
+            <a href="cart.html" class="mt-3 inline-flex text-xs font-bold text-brandRed underline">Ouvrir le panier des commandes</a>
           </div>
 
           <p class="text-[11px] leading-relaxed text-gray-400" role="note">
-            Pour transmettre votre demande, WhatsApp doit être installé et votre compte doit être connecté.
-            Le bouton prépare automatiquement un message destiné au <strong class="text-white">034 02 992 01</strong> :
-            vérifiez-le dans WhatsApp, puis appuyez sur « Envoyer ». L’application WhatsApp sur téléphone est recommandée.
-            Si le message prérempli ne s’affiche pas, ouvrez directement WhatsApp et envoyez votre demande au 034 02 992 01.
+            Le bouton d’envoi ouvre normalement WhatsApp avec votre demande déjà préremplie pour le <strong class="text-white">034 02 992 01</strong>. Vérifiez le message dans WhatsApp puis appuyez sur « Envoyer ». Si WhatsApp ne s’ouvre pas ou si le message prérempli est absent, utilisez le bouton « Copier le récapitulatif » ci-dessus, collez le texte dans WhatsApp et envoyez-le manuellement au même numéro.
           </p>
           <button type="submit" class="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-brandRed to-brandRedHover shadow-lg shadow-brandRed/20 hover:shadow-brandRed/40 transition-all flex items-center justify-center space-x-2 liquid-red-btn">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -1057,9 +1230,9 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
         <div>
           <span class="text-brandRed text-xs font-bold uppercase tracking-widest font-montserrat">Espace personnel</span>
           <h2 class="font-montserrat text-2xl sm:text-3xl font-extrabold mt-2">Votre panier de commandes</h2>
-          <p class="mt-2 text-sm text-gray-400 max-w-xl">Retrouvez toutes vos demandes dans un espace dédié, plus clair et plus facile à gérer. Le panier s’ouvre dans un nouvel onglet.</p>
+          <p class="mt-2 text-sm text-gray-400 max-w-xl">Retrouvez et gérez toutes vos demandes dans votre espace panier dédié.</p>
         </div>
-        <a href="DLX_LOGISTICS_panier.html" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center px-6 py-4 rounded-xl bg-brandRed text-white text-xs font-bold uppercase tracking-wide hover:bg-brandRedHover shadow-lg shadow-brandRed/20">
+        <a href="cart.html" class="shrink-0 inline-flex items-center justify-center px-6 py-4 rounded-xl bg-brandRed text-white text-xs font-bold uppercase tracking-wide hover:bg-brandRedHover shadow-lg shadow-brandRed/20">
           Ouvrir mon panier <span id="navCartCountBottom" class="ml-2 inline-flex min-w-6 h-6 px-1 items-center justify-center rounded-full bg-white text-brandRed text-[10px]">0</span>
         </a>
       </div>
@@ -1221,6 +1394,208 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
     </div>
   </section>
 
+
+<style id="dlx-compact-reviews-style">
+#dlx-reviews{padding:clamp(34px,5vw,66px) 16px!important;background:transparent!important;color:inherit!important}
+#dlx-reviews .dlx-reviews-layout{max-width:1080px;margin:0 auto}
+#dlx-reviews .dlx-reviews-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(230px,.9fr) 1.3fr;align-items:center;gap:28px;padding:clamp(25px,4vw,48px);color:#fff;border-radius:2px;background:radial-gradient(ellipse at 58% 20%,rgba(255,95,105,.22),transparent 48%),linear-gradient(115deg,#390d16 0%,#8f1727 52%,#3b1018 100%);box-shadow:0 12px 28px rgba(90,12,25,.14)}
+#dlx-reviews .dlx-reviews-hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(135deg,transparent 0 3px,rgba(255,255,255,.07) 3px 4px);mask-image:linear-gradient(90deg,transparent,#000)}
+#dlx-reviews .dlx-reviews-intro,#dlx-reviews .dlx-review-metrics{position:relative;z-index:1}
+#dlx-reviews .dlx-reviews-kicker{display:block;font-size:9px;letter-spacing:.2em;font-weight:900;color:#f1a4b0}
+#dlx-reviews .dlx-reviews-intro h2{margin:13px 0 10px;font:800 clamp(23px,3vw,34px)/1.12 Montserrat,sans-serif;letter-spacing:-.04em;color:#fff}
+#dlx-reviews .dlx-reviews-intro h2 strong{color:#f5b5c0}
+#dlx-reviews .dlx-reviews-intro p{max-width:360px;color:rgba(255,255,255,.72);font-size:11px;line-height:1.7}
+#dlx-reviews .dlx-review-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#dlx-reviews .dlx-review-metric{min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:12px 5px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);transition:transform .25s,background .25s,border-color .25s}
+#dlx-reviews .dlx-review-metric:hover{transform:translateY(-5px);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
+#dlx-reviews .dlx-metric-icon{display:grid;place-items:center;width:29px;height:29px;margin-bottom:10px;border:1px solid rgba(255,255,255,.42);border-radius:50%;font-size:15px;color:#fff}
+#dlx-reviews .dlx-review-metric strong{font:800 clamp(17px,2vw,23px)/1.1 Montserrat,sans-serif;color:#fff;white-space:nowrap}
+#dlx-reviews .dlx-review-metric small{margin-top:7px;font-size:8px;line-height:1.4;letter-spacing:.08em;font-weight:800;color:rgba(255,255,255,.7)}
+#dlx-reviews .dlx-reviews-action-panel{position:relative;display:grid;grid-template-columns:1.25fr .8fr auto;align-items:center;gap:24px;margin-top:22px;padding:clamp(23px,3.6vw,38px);background:radial-gradient(ellipse at 82% 20%,rgba(255,255,255,.055),transparent 40%),linear-gradient(115deg,#10151d,#151a23 60%,#0c1119);color:#fff;box-shadow:0 14px 32px rgba(10,15,25,.15)}
+#dlx-reviews .dlx-action-copy h3{margin:8px 0;font:800 clamp(19px,2.4vw,27px)/1.2 Montserrat,sans-serif;color:#fff}
+#dlx-reviews .dlx-action-copy p{max-width:370px;font-size:10px;line-height:1.7;color:#aeb5c0}
+#dlx-reviews .dlx-action-stats{display:flex;gap:25px}
+#dlx-reviews .dlx-action-stats div{display:flex;flex-direction:column;gap:5px}
+#dlx-reviews .dlx-action-stats strong{font:800 23px Montserrat,sans-serif;color:#fff}
+#dlx-reviews .dlx-action-stats span{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#aeb5c0}
+#dlx-reviews .dlx-review-details{position:relative;z-index:3}
+#dlx-reviews .dlx-review-details>summary{display:flex;align-items:center;justify-content:center;gap:16px;min-width:145px;padding:12px 16px;border:1px solid rgba(255,255,255,.72);border-radius:30px;color:#fff;font-size:10px;font-weight:800;cursor:pointer;list-style:none;transition:background .2s,color .2s,transform .2s}
+#dlx-reviews .dlx-review-details>summary::-webkit-details-marker{display:none}
+#dlx-reviews .dlx-review-details>summary:hover{background:#fff;color:#141922;transform:translateY(-2px)}
+#dlx-reviews .dlx-review-details[open]>summary{background:#fff;color:#141922}
+#dlx-reviews .dlx-review-details>summary b{font-size:16px}
+#dlx-reviews .dlx-review-form{position:absolute;right:0;top:calc(100% + 12px);width:min(340px,calc(100vw - 36px));padding:20px;border:1px solid #e2e5eb;border-radius:14px;background:#fff;color:#242a34;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+#dlx-reviews .dlx-review-form label,#dlx-reviews .dlx-review-label{display:block;margin:10px 0 6px;font-size:10px;font-weight:800;color:#444d5a}
+#dlx-reviews .dlx-review-form input,#dlx-reviews .dlx-review-form textarea{display:block;width:100%;padding:10px 11px;border:1px solid #dce1e8;border-radius:8px;background:#f8f9fb;color:#202630;font:11px Inter,sans-serif;outline:none}
+#dlx-reviews .dlx-review-form input:focus,#dlx-reviews .dlx-review-form textarea:focus{border-color:#d92738;box-shadow:0 0 0 3px rgba(217,39,56,.1)}
+#dlx-reviews .dlx-star-picker{display:flex;align-items:center;gap:1px;flex-wrap:wrap}
+#dlx-reviews .dlx-star{width:29px;height:30px;border:0;background:transparent;font-size:24px;line-height:1;color:#cbd0d7;cursor:pointer;transition:color .18s,transform .18s}
+#dlx-reviews .dlx-star:hover{transform:translateY(-3px) scale(1.1)}
+#dlx-reviews .dlx-star.is-selected{color:#e5a51d;animation:dlxStarPop .38s cubic-bezier(.2,.8,.25,1.4)}
+#dlx-reviews #dlxRatingLabel{margin-left:6px;font-size:9px;color:#68717d}
+#dlx-reviews .dlx-review-action{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:12px;padding:11px 13px;border-radius:8px;background:linear-gradient(100deg,#e52b3c,#b91c2b);color:#fff;font-size:10px;font-weight:900;transition:transform .2s,box-shadow .2s}
+#dlx-reviews .dlx-review-action:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(217,39,56,.22)}
+#dlx-reviews #dlxReviewNotice{margin-top:9px;font-size:9px;color:#68717d}
+#dlx-reviews .dlx-reviews-list-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:34px 0 12px}
+#dlx-reviews .dlx-reviews-list-heading h3{margin-top:5px;font:800 20px Montserrat,sans-serif;color:#222a35}
+#dlx-reviews .dlx-reviews-live{display:flex;align-items:center;gap:7px;font-size:9px;font-weight:800;color:#747e8b}
+#dlx-reviews .dlx-reviews-live i{width:7px;height:7px;border-radius:50%;background:#20b981;box-shadow:0 0 0 4px rgba(32,185,129,.12)}
+#dlx-reviews .dlx-review-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#dlx-reviews .dlx-review-entry{padding:17px 18px;border:1px solid #e2e5eb;border-radius:12px;background:rgba(255,255,255,.82);box-shadow:0 5px 18px rgba(20,25,35,.035);transition:transform .22s,box-shadow .22s}
+#dlx-reviews .dlx-review-entry:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,25,35,.08)}
+#dlx-reviews .dlx-review-entry strong{font-size:11px;color:#303744}
+#dlx-reviews .dlx-review-entry p{margin-top:8px;color:#586270;font-size:11px;line-height:1.65}
+#dlx-reviews .dlx-review-entry .dlx-review-date{display:block;margin-top:9px;font-size:9px;color:#929aa5}
+#dlx-reviews .dlx-review-empty{grid-column:1/-1;padding:24px;border:1px dashed #d8dde5;border-radius:12px;text-align:center;color:#7a8491;font-size:11px}
+@keyframes dlxStarPop{0%{transform:scale(.65) rotate(-12deg)}55%{transform:scale(1.25) rotate(7deg)}100%{transform:scale(1) rotate(0)}}
+.dlx-theme-toggle{position:fixed!important;z-index:2000!important;top:50%!important;right:18px!important;left:auto!important;transform:translateY(-50%)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:44px!important;padding:11px 14px!important;border:1px solid rgba(220,38,38,.28)!important;border-radius:999px!important;background:rgba(255,255,255,.94)!important;color:#252a33!important;font-size:10px!important;font-weight:900!important;box-shadow:0 8px 26px rgba(10,15,25,.16)!important;backdrop-filter:blur(14px)!important;cursor:pointer!important}
+.dlx-theme-toggle:hover{transform:translateY(calc(-50% - 3px))!important;box-shadow:0 12px 30px rgba(220,38,38,.2)!important}
+.dlx-theme-icon{font-size:16px;line-height:1}
+body.dlx-dark .dlx-theme-toggle{background:rgba(28,30,37,.96)!important;color:#fff!important;border-color:rgba(255,90,105,.45)!important}
+body.dlx-dark #dlx-reviews .dlx-reviews-list-heading h3{color:#f4f5f7}
+body.dlx-dark #dlx-reviews .dlx-review-entry{background:#22232a;border-color:#3a3d47}
+body.dlx-dark #dlx-reviews .dlx-review-entry strong{color:#f3f4f6}
+body.dlx-dark #dlx-reviews .dlx-review-entry p{color:#c1c5ce}
+body.dlx-dark #dlx-reviews .dlx-review-empty{border-color:#454650;color:#b9bbc4}
+@media(max-width:850px){#dlx-reviews .dlx-reviews-hero{grid-template-columns:1fr;gap:22px}#dlx-reviews .dlx-reviews-intro p{max-width:560px}#dlx-reviews .dlx-reviews-action-panel{grid-template-columns:1fr auto;gap:18px}#dlx-reviews .dlx-action-stats{grid-column:1}#dlx-reviews .dlx-review-details{grid-column:2;grid-row:1/3}}
+@media(max-width:600px){#dlx-reviews{padding:28px 12px!important}#dlx-reviews .dlx-reviews-hero{padding:24px 18px}#dlx-reviews .dlx-review-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#dlx-reviews .dlx-review-metric{padding:12px 4px}#dlx-reviews .dlx-reviews-action-panel{grid-template-columns:1fr;padding:23px 18px}#dlx-reviews .dlx-review-details{grid-column:1;grid-row:auto}#dlx-reviews .dlx-review-details>summary{width:100%}#dlx-reviews .dlx-review-form{left:0;right:auto;width:100%}#dlx-reviews .dlx-review-list{grid-template-columns:1fr}#dlx-reviews .dlx-action-stats{gap:30px}#dlx-reviews .dlx-reviews-list-heading h3{font-size:17px}}
+@media(prefers-reduced-motion:reduce){#dlx-reviews .dlx-review-metric,#dlx-reviews .dlx-review-entry,#dlx-reviews .dlx-review-action,.dlx-theme-toggle{transition:none!important;animation:none!important}}
+
+/* Final refinement: restrained red review panel and raised icon-only theme switch */
+#dlx-reviews .dlx-reviews-hero{
+  background:radial-gradient(ellipse at 58% 20%,rgba(255,105,115,.18),transparent 48%),
+             linear-gradient(115deg,#351018 0%,#8f1d2c 52%,#42121b 100%);
+  box-shadow:0 12px 28px rgba(90,12,25,.13);
+}
+#dlx-reviews .dlx-reviews-intro h2 strong{color:#ffd0d4}
+#dlx-reviews .dlx-reviews-kicker{color:#ffc0c6}
+#dlx-reviews .dlx-review-metric{
+  border:0;
+  border-left:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  padding:8px 5px;
+}
+#dlx-reviews .dlx-review-metric:first-child{border-left:0}
+#dlx-reviews .dlx-review-metric:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.055);
+}
+#dlx-reviews .dlx-metric-icon{width:25px;height:25px;margin-bottom:8px}
+#dlx-reviews .dlx-reviews-action-panel{
+  grid-template-columns:minmax(0,1.3fr) auto auto;
+  gap:20px;
+  padding:clamp(22px,3vw,32px);
+}
+#dlx-reviews .dlx-action-copy h3{font-size:clamp(18px,2vw,23px)}
+#dlx-reviews .dlx-action-stats{gap:20px}
+#dlx-reviews .dlx-action-stats strong{font-size:20px}
+#dlx-reviews .dlx-review-entry{box-shadow:0 3px 12px rgba(20,25,35,.03)}
+#dlx-reviews .dlx-review-entry:hover{transform:translateY(-2px)}
+.dlx-theme-toggle{
+  position:fixed!important;
+  z-index:3000!important;
+  top:112px!important;
+  right:18px!important;
+  left:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  width:46px!important;
+  height:46px!important;
+  min-height:46px!important;
+  padding:0!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.96)!important;
+  color:#242833!important;
+  border:1px solid rgba(220,38,38,.28)!important;
+  box-shadow:0 7px 22px rgba(10,15,25,.15)!important;
+}
+.dlx-theme-toggle:hover{transform:translateY(-3px)!important}
+.dlx-theme-icon{font-size:20px!important;line-height:1!important}
+body.dlx-dark .dlx-theme-toggle{
+  background:rgba(28,30,37,.97)!important;
+  color:#fff!important;
+  border-color:rgba(255,90,105,.45)!important;
+}
+@media(max-width:850px){
+  #dlx-reviews .dlx-reviews-action-panel{grid-template-columns:1fr auto;gap:16px}
+  #dlx-reviews .dlx-action-stats{grid-column:1}
+  #dlx-reviews .dlx-review-details{grid-column:2;grid-row:1/3}
+}
+@media(max-width:600px){
+  #dlx-reviews .dlx-review-metric{border-left:0;border-top:1px solid rgba(255,255,255,.16)}
+  #dlx-reviews .dlx-review-metric:nth-child(-n+2){border-top:0}
+  #dlx-reviews .dlx-reviews-action-panel{grid-template-columns:1fr}
+  #dlx-reviews .dlx-review-details{grid-column:1;grid-row:auto}
+  .dlx-theme-toggle{
+    top:88px!important;
+    right:12px!important;
+    bottom:auto!important;
+    width:42px!important;
+    height:42px!important;
+  }
+}
+
+</style>
+<section id="dlx-reviews" aria-label="Avis clients">
+  <div class="dlx-reviews-layout">
+    <div class="dlx-reviews-hero">
+      <div class="dlx-reviews-intro">
+        <span class="dlx-reviews-kicker">LA CONFIANCE, NOTRE PRIORITÉ</span>
+        <h2>Les expériences qui<br><strong>font avancer DLX.</strong></h2>
+        <p>Chaque retour compte. Découvrez les avis partagés par nos clients et contribuez à faire progresser notre qualité de service.</p>
+      </div>
+      <div class="dlx-review-metrics" aria-live="polite">
+        <div class="dlx-review-metric"><span class="dlx-metric-icon">★</span><strong id="dlxReviewAverage">—</strong><small>NOTE MOYENNE / 5</small></div>
+        <div class="dlx-review-metric"><span class="dlx-metric-icon">◎</span><strong id="dlxReviewCount">0 avis</strong><small>AVIS PUBLIÉS</small></div>
+        <div class="dlx-review-metric"><span class="dlx-metric-icon">✦</span><strong id="dlxReviewFive">0</strong><small>NOTES 5 ÉTOILES</small></div>
+        <div class="dlx-review-metric"><span class="dlx-metric-icon">↗</span><strong id="dlxReviewRate">—</strong><small>AVIS POSITIFS</small></div>
+      </div>
+    </div>
+
+    <div class="dlx-reviews-action-panel">
+      <div class="dlx-action-copy">
+        <span class="dlx-reviews-kicker">VOTRE PAROLE A DE LA VALEUR</span>
+        <h3>Une expérience à partager ?</h3>
+        <p>Votre témoignage aide notre équipe à maintenir un service fiable, humain et professionnel.</p>
+      </div>
+      <div class="dlx-action-stats">
+        <div><strong id="dlxReviewCountBottom">0</strong><span>retours clients</span></div>
+        <div><strong id="dlxReviewAverageBottom">—</strong><span>note moyenne</span></div>
+      </div>
+      <details class="dlx-review-details">
+        <summary><span>Donner mon avis</span><b aria-hidden="true">＋</b></summary>
+        <form id="dlxReviewForm" class="dlx-review-form">
+          <label for="dlxReviewName">Nom (facultatif)</label>
+          <input id="dlxReviewName" maxlength="45" autocomplete="name" placeholder="Votre nom">
+          <span class="dlx-review-label">Votre note</span>
+          <div id="dlxStarPicker" class="dlx-star-picker" role="radiogroup" aria-label="Choisir une note sur cinq étoiles">
+            <button type="button" class="dlx-star" data-rating="1" aria-label="1 étoile" aria-checked="false" role="radio">★</button>
+            <button type="button" class="dlx-star" data-rating="2" aria-label="2 étoiles" aria-checked="false" role="radio">★</button>
+            <button type="button" class="dlx-star" data-rating="3" aria-label="3 étoiles" aria-checked="false" role="radio">★</button>
+            <button type="button" class="dlx-star" data-rating="4" aria-label="4 étoiles" aria-checked="false" role="radio">★</button>
+            <button type="button" class="dlx-star" data-rating="5" aria-label="5 étoiles" aria-checked="false" role="radio">★</button>
+            <span id="dlxRatingLabel">Choisir une note</span>
+          </div>
+          <label for="dlxReviewText">Commentaire</label>
+          <textarea id="dlxReviewText" rows="3" maxlength="500" required placeholder="Racontez-nous votre expérience avec DLX LOGISTICS…"></textarea>
+          <button type="submit" class="dlx-review-action">Publier mon avis <span aria-hidden="true">→</span></button>
+          <p id="dlxReviewNotice" role="status" aria-live="polite">Votre avis sera enregistré sur cet appareil.</p>
+        </form>
+      </details>
+    </div>
+
+    <div class="dlx-reviews-list-heading">
+      <div><span class="dlx-reviews-kicker">TÉMOIGNAGES</span><h3>Ils nous font confiance</h3></div>
+      <span class="dlx-reviews-live"><i></i> Avis clients</span>
+    </div>
+    <div id="dlxReviewList" class="dlx-review-list">
+      <p class="dlx-review-empty">Aucun avis pour le moment. Soyez le premier à partager votre expérience.</p>
+    </div>
+  </div>
+</section>
+
   <!-- ================= FOOTER & LOCALISATION ================= -->
   <footer class="bg-brandDark text-gray-400 py-14 border-t border-brandRed/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -1255,6 +1630,8 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
       </div>
 
     </div>
+
+
 
   </footer>
 
@@ -1347,21 +1724,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
         }));
       }
 
-      // Widget d’aide : ouverture/fermeture accessible
-      const helpToggle = document.getElementById('helpToggle');
-      const helpPanel = document.getElementById('helpPanel');
-      const helpClose = document.getElementById('helpClose');
-      const toggleHelp = (forceOpen) => {
-        if (!helpPanel || !helpToggle) return;
-        const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : helpPanel.classList.contains('hidden');
-        helpPanel.classList.toggle('hidden', !shouldOpen);
-        helpToggle.setAttribute('aria-expanded', String(shouldOpen));
-      };
-      if (helpToggle) helpToggle.addEventListener('click', () => toggleHelp());
-      if (helpClose) helpClose.addEventListener('click', () => toggleHelp(false));
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') toggleHelp(false);
-      });
+      // Le nouveau centre d’aide est piloté par le contrôleur DLX ajouté en fin de page.
 
       // 1. Année dynamique
       const yearEl = document.getElementById('year');
@@ -1396,6 +1759,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
       const getRequest = () => ({
         id: (window.crypto && window.crypto.randomUUID) ? window.crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2),
         name: document.getElementById('fullName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
         email: document.getElementById('email').value.trim(),
         budget: document.getElementById('budget').value.trim(),
         product: document.getElementById('product').value.trim()
@@ -1403,8 +1767,8 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
 
       const validFields = () => {
         const request = getRequest();
-        if (!request.name || !request.budget || !request.product) {
-          showNotice('Veuillez renseigner votre nom, votre budget et la description du produit.', 'formNotice', true);
+        if (!request.name || !request.phone || !request.budget || !request.product) {
+          showNotice('Veuillez renseigner votre nom, votre numéro de téléphone, votre budget et la description du produit.', 'formNotice', true);
           return false;
         }
         const emailInput = document.getElementById('email');
@@ -1418,6 +1782,51 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
 
       const makeWhatsAppLink = (message) =>
         'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+
+      const buildQuoteSummary = () => {
+        const request = getRequest();
+        return 'Bonjour DLX LOGISTICS,\n\nJe souhaite demander un devis.\n\n' +
+          'Nom : ' + (request.name || 'À compléter') + '\n' +
+          'Téléphone : ' + (request.phone || 'À compléter') + '\n' +
+          'E-mail : ' + (request.email || 'Non renseigné') + '\n' +
+          'Produit : ' + (request.product || 'À compléter') + '\n' +
+          'Budget estimé : ' + (request.budget || 'À compléter') + '\n\n' +
+          'Merci de me confirmer la disponibilité, le prix détaillé et les modalités de livraison.';
+      };
+
+      const updateQuoteSummary = () => {
+        const preview = document.getElementById('quoteSummaryText');
+        if (preview) preview.textContent = buildQuoteSummary();
+      };
+
+      ['fullName', 'phone', 'email', 'budget', 'product'].forEach(id => {
+        const field = document.getElementById(id);
+        if (field) field.addEventListener('input', updateQuoteSummary);
+      });
+
+      const copyQuoteButton = document.getElementById('copyQuoteSummary');
+      if (copyQuoteButton) copyQuoteButton.addEventListener('click', async () => {
+        const text = buildQuoteSummary();
+        const notice = document.getElementById('quoteCopyNotice');
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const helper = document.createElement('textarea');
+            helper.value = text;
+            helper.style.position = 'fixed';
+            helper.style.opacity = '0';
+            document.body.appendChild(helper);
+            helper.select();
+            const copied = document.execCommand('copy');
+            helper.remove();
+            if (!copied) throw new Error('copy_failed');
+          }
+          if (notice) notice.textContent = 'Récapitulatif copié. Vous pouvez le coller dans WhatsApp.';
+        } catch (error) {
+          if (notice) notice.textContent = 'La copie automatique a échoué. Sélectionnez le texte ci-dessus pour le copier.';
+        }
+      });
 
       const renderCart = () => {
         const containers = ['cartItems'];
@@ -1453,13 +1862,13 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
             title.textContent = (index + 1) + '. ' + item.product;
             const details = document.createElement('p');
             details.className = 'mt-1 text-xs text-gray-400';
-            details.textContent = 'Client : ' + item.name + ' · Budget : ' + item.budget + (item.email ? ' · E-mail : ' + item.email : '');
+            details.textContent = 'Client : ' + item.name + ' · Téléphone : ' + (item.phone || 'Non renseigné') + ' · Budget : ' + item.budget + (item.email ? ' · E-mail : ' + item.email : '');
             info.append(title, details);
 
             const controls = document.createElement('div');
             controls.className = 'flex flex-wrap gap-2';
             const follow = document.createElement('a');
-            follow.href = makeWhatsAppLink('Bonjour DLX LOGISTICS, je souhaite un suivi de mon colis. Nom : ' + item.name + '. Numéro de téléphone : _____. Colis / produit : ' + item.product + '. Merci de me communiquer son état d’avancement.');
+            follow.href = makeWhatsAppLink('Bonjour DLX LOGISTICS, je souhaite un suivi de mon colis. Nom : ' + item.name + '. Numéro de téléphone : ' + (item.phone || 'À compléter') + '. Colis / produit : ' + item.product + '. Merci de me communiquer son état d’avancement.');
             follow.target = '_blank';
             follow.rel = 'noopener noreferrer';
             follow.className = 'px-3 py-2 rounded-lg bg-brandRed text-white text-[10px] font-bold';
@@ -1489,7 +1898,8 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
           cart.push(request);
           saveCart();
           renderCart();
-          showNotice('Votre demande a été ajoutée au panier des commandes.', 'formNotice');
+          // La demande est sauvegardée avant d'ouvrir la page panier dédiée.
+          window.location.href = 'cart.html';
         });
       }
 
@@ -1497,6 +1907,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
         const entries = cart.map((item, index) =>
           (index + 1) + '. Produit : ' + item.product +
           ' | Client : ' + item.name +
+          ' | Téléphone : ' + (item.phone || 'Non renseigné') +
           ' | Budget : ' + item.budget +
           (item.email ? ' | E-mail : ' + item.email : '')
         ).join('\n');
@@ -1539,6 +1950,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
           const current = getRequest();
           const message = 'Bonjour DLX LOGISTICS,\n\nJe souhaite demander un devis.\n\n' +
             'Nom : ' + current.name + '\n' +
+            'Téléphone : ' + current.phone + '\n' +
             'E-mail : ' + (current.email || 'Non renseigné') + '\n' +
             'Produit : ' + current.product + '\n' +
             'Budget : ' + current.budget + '\n\n' +
@@ -1549,6 +1961,7 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
       }
 
       renderCart();
+      updateQuoteSummary();
 
       // 4. Accordéon FAQ
       const faqItems = document.querySelectorAll('.faq-item');
@@ -1618,55 +2031,30 @@ body:not(.dlx-dark) .dlx-network-panel { box-shadow:0 20px 48px rgba(35,40,48,.2
     });
   </script>
 
-  <!-- ================= WIDGET D’AIDE ================= -->
-  <div id="helpWidget" class="fixed bottom-5 left-5 z-50">
-    <button id="helpToggle" type="button" aria-expanded="false" aria-controls="helpPanel"
-      class="flex items-center gap-3 rounded-full bg-brandDark text-white px-4 py-3 shadow-2xl border border-brandRed/50 hover:bg-brandObsidian">
-      <span class="flex items-center justify-center w-8 h-8 rounded-full bg-brandRed text-white font-bold text-sm">?</span>
-      <span class="text-xs font-bold uppercase tracking-wide">Besoin d’aide ?</span>
-    </button>
-    <section id="helpPanel" class="hidden absolute bottom-16 left-0 w-[min(90vw,360px)] rounded-2xl bg-white border border-gray-200 shadow-2xl overflow-hidden" aria-label="Centre d’aide">
-      <div class="bg-brandDark text-white p-5">
-        <div class="flex items-center justify-between gap-3">
-          <div>
-            <p class="text-brandRed text-[10px] font-bold uppercase tracking-widest">Assistance DLX</p>
-            <h2 class="font-montserrat font-extrabold text-lg mt-1">Comment pouvons-nous aider ?</h2>
-          </div>
-          <button id="helpClose" type="button" class="w-8 h-8 rounded-full border border-white/20 hover:bg-white/10" aria-label="Fermer">×</button>
-        </div>
-        <p class="text-xs text-gray-300 mt-2">Quelques solutions aux difficultés les plus fréquentes.</p>
-      </div>
-      <div class="p-4 max-h-[55vh] overflow-y-auto space-y-3 text-xs text-gray-700">
-        <details class="rounded-xl border border-gray-200 p-3" open>
-          <summary class="font-bold cursor-pointer text-brandDark">WhatsApp ne s’ouvre pas</summary>
-          <p class="mt-2 leading-relaxed">Installez ou mettez à jour WhatsApp, puis vérifiez que votre compte est connecté. Sur ordinateur, essayez WhatsApp Web. Vous pouvez aussi envoyer votre demande manuellement au <strong>034 02 992 01</strong>.</p>
-        </details>
-        <details class="rounded-xl border border-gray-200 p-3">
-          <summary class="font-bold cursor-pointer text-brandDark">Le message WhatsApp est vide</summary>
-          <p class="mt-2 leading-relaxed">Revenez sur le site, copiez les informations de votre demande, puis ouvrez WhatsApp et envoyez-les au <strong>034 02 992 01</strong>. Vérifiez le texte avant l’envoi.</p>
-        </details>
-        <details class="rounded-xl border border-gray-200 p-3">
-          <summary class="font-bold cursor-pointer text-brandDark">Mon panier semble vide</summary>
-          <p class="mt-2 leading-relaxed">Utilisez le même navigateur et le même appareil que lors de l’ajout des demandes. Le panier est enregistré localement et n’est pas synchronisé entre appareils. Évitez d’effacer les données du navigateur.</p>
-        </details>
-        <details class="rounded-xl border border-gray-200 p-3">
-          <summary class="font-bold cursor-pointer text-brandDark">Je n’arrive pas à ajouter une demande</summary>
-          <p class="mt-2 leading-relaxed">Vérifiez les champs obligatoires : nom, budget et description du produit. Si le problème persiste, actualisez la page et réessayez.</p>
-        </details>
-        <details class="rounded-xl border border-gray-200 p-3">
-          <summary class="font-bold cursor-pointer text-brandDark">Je n’ai pas reçu de confirmation</summary>
-          <p class="mt-2 leading-relaxed">L’ouverture de WhatsApp ne signifie pas que la demande a été envoyée. Appuyez sur « Envoyer » dans WhatsApp, puis attendez la réponse de DLX LOGISTICS.</p>
-        </details>
-        <details class="rounded-xl border border-gray-200 p-3">
-          <summary class="font-bold cursor-pointer text-brandDark">Comment demander le suivi de ma commande ?</summary>
-          <p class="mt-2 leading-relaxed">Indiquez votre nom, votre numéro de téléphone et le nom ou la description de votre colis, puis contactez-nous sur WhatsApp. Une demande de mise à jour est prévue tous les 7 jours.</p>
-        </details>
-        <a href="https://wa.me/261340299201?text=Bonjour%20DLX%20LOGISTICS%2C%20j%27ai%20besoin%20d%27aide%20avec%20votre%20site." target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-center w-full rounded-xl bg-brandRed text-white font-bold py-3 hover:bg-brandRedHover">Contacter l’assistance WhatsApp</a>
+  <!-- ================= CENTRE D’ASSISTANCE DLX ================= -->
+  <div id="helpWidget" class="dlx-help-dock">
+    <section id="helpPanel" class="dlx-help-panel" aria-label="Centre d’assistance" hidden>
+      <div class="dlx-help-head"><div class="dlx-help-brandline"><span class="dlx-help-status"></span>ASSISTANCE CLIENTS · DLX</div><button id="helpClose" type="button" class="dlx-help-close" aria-label="Fermer le centre d’aide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button><h2>Comment pouvons-nous vous aider ?</h2><p>Retrouvez rapidement les informations utiles à votre demande.</p></div>
+      <div class="dlx-help-content">
+        <div class="dlx-help-category">COMMANDES & SOURCING</div><div class="dlx-help-questions">
+          <details class="dlx-help-item"><summary>Comment demander un produit qui n’est pas sur le site ?</summary><p>Utilisez le formulaire de sourcing et décrivez le produit avec précision : nom, lien, modèle, quantité et budget. Notre équipe étudiera votre demande et vous communiquera les possibilités avant validation.</p></details>
+          <details class="dlx-help-item"><summary>Puis-je modifier ma demande après l’envoi ?</summary><p>Contactez-nous rapidement sur WhatsApp avec votre nom et les détails de la demande. Toute modification dépend de l’état d’avancement de la recherche ou de la commande.</p></details>
+          <details class="dlx-help-item"><summary>Comment le prix final est-il calculé ?</summary><p>Le montant est communiqué après étude du produit et des frais applicables. Attendez toujours la confirmation écrite du tarif final avant tout paiement.</p></details></div>
+        <div class="dlx-help-category">PAIEMENT & SÉCURITÉ</div><div class="dlx-help-questions">
+          <details class="dlx-help-item"><summary>Quel est le numéro Mvola officiel ?</summary><p>Le seul numéro autorisé pour l’acompte annoncé est <strong>034 02 992 01</strong>. Vérifiez toujours le numéro avant tout transfert et conservez votre justificatif.</p></details>
+          <details class="dlx-help-item"><summary>Quand dois-je payer l’acompte et le solde ?</summary><p>Lorsqu’un acompte de 50 % est convenu, les modalités sont confirmées avant paiement. Le solde restant est réglé au moment de la remise, selon les conditions communiquées pour votre commande.</p></details></div>
+        <div class="dlx-help-category">LIVRAISON & SUIVI</div><div class="dlx-help-questions">
+          <details class="dlx-help-item"><summary>Comment suivre l’avancement de mon colis ?</summary><p>Contactez notre équipe avec votre nom, votre numéro de téléphone et le nom ou la description du colis. Vous pouvez demander une mise à jour tous les 7 jours.</p></details>
+          <details class="dlx-help-item"><summary>Comment se déroule la remise à Antananarivo ?</summary><p>Une fois le colis reçu et vérifié, nous convenons ensemble d’un lieu et d’un horaire de rendez-vous pour une remise en main propre, sous réserve de disponibilité.</p></details>
+          <details class="dlx-help-item"><summary>Pourquoi n’ai-je pas reçu de confirmation WhatsApp ?</summary><p>L’ouverture de WhatsApp ne transmet pas automatiquement votre demande. Vérifiez que vous avez appuyé sur « Envoyer », puis attendez la réponse de notre équipe.</p></details></div>
+        <a href="https://wa.me/261340299201?text=Bonjour%20DLX%20LOGISTICS%2C%20j%27ai%20besoin%20d%27assistance." target="_blank" rel="noopener noreferrer" class="dlx-help-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.5A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M8.5 8.5c.5 2.5 2.5 4.5 5 5"/></svg>Contacter notre équipe sur WhatsApp</a>
       </div>
     </section>
+    <button type="button" data-dlx-help-open class="dlx-help-toggle" aria-controls="helpPanel" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.4 8.4 8.7 8.7 0 0 1-4-.96L3 20l1.1-4.2a8.4 8.4 0 1 1 16.9-4.3Z"/><path d="M8.5 10h7M8.5 13.5h4.5"/></svg>
+      <span>Centre d’aide</span>
+    </button>
   </div>
-
   <!-- Consentement cookies DLX -->
   <div id="dlxCookieLayer" role="dialog" aria-modal="true" aria-labelledby="dlxCookieTitle" aria-describedby="dlxCookieText">
     <section id="dlxCookieCard">
@@ -1807,13 +2195,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
- const toggle=document.getElementById('dlxThemeToggle');
- const setTheme=dark=>{document.body.classList.toggle('dlx-dark',dark);if(toggle){toggle.setAttribute('aria-pressed',String(dark));toggle.setAttribute('aria-label',dark?'Activer le mode clair':'Activer le mode sombre');toggle.querySelector('.dlx-theme-icon').textContent=dark?'☀':'☾';toggle.querySelector('.dlx-theme-text').textContent=dark?'Mode clair':'Mode sombre';}try{localStorage.setItem('dlx-theme',dark?'dark':'light')}catch(e){}};
- let saved='light';try{saved=localStorage.getItem('dlx-theme')||'light'}catch(e){}setTheme(saved==='dark');
- toggle?.addEventListener('click',()=>setTheme(!document.body.classList.contains('dlx-dark')));
- const copy=document.getElementById('dlxCopyMvola'),feedback=document.getElementById('dlxCopyFeedback');
- copy?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('0340299201');feedback.textContent='Numéro copié !';copy.textContent='✓';}catch(e){feedback.textContent='Copie non disponible sur ce navigateur.';}setTimeout(()=>{if(feedback)feedback.textContent='';if(copy)copy.textContent='⧉'},2200)});
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('dlxThemeToggle');
+  const icon = toggle?.querySelector('.dlx-theme-toggle-icon');
+  const applyTheme = (theme) => {
+    const dark = theme === 'dark';
+    document.body.classList.toggle('dlx-dark', dark);
+    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.setAttribute('aria-label', dark ? 'Activer le mode clair' : 'Activer le mode sombre');
+      toggle.title = dark ? 'Mode sombre — passer au mode clair' : 'Mode clair — passer au mode sombre';
+    }
+    if (icon) icon.textContent = dark ? '☀' : '☾';
+    try { localStorage.setItem('dlx-theme', dark ? 'dark' : 'light'); } catch (_) {}
+  };
+  let savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('dlx-theme') || 'light'; } catch (_) {}
+  applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+  toggle?.addEventListener('click', () => {
+    applyTheme(document.body.classList.contains('dlx-dark') ? 'light' : 'dark');
+  });
+  const copy = document.getElementById('dlxCopyMvola');
+  const feedback = document.getElementById('dlxCopyFeedback');
+  copy?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('0340299201');
+      if (feedback) feedback.textContent = 'Numéro copié !';
+      copy.textContent = '✓';
+    } catch (_) {
+      if (feedback) feedback.textContent = 'Copie non disponible sur ce navigateur.';
+    }
+    window.setTimeout(() => {
+      if (feedback) feedback.textContent = '';
+      if (copy) copy.textContent = '⧉';
+    }, 2200);
+  });
 });
 </script>
 
@@ -1936,5 +2353,455 @@ body.dlx-dark #hero.dlx-madagascar-hero::after{background:linear-gradient(110deg
 /* Final theme-specific precedence: vector mesh only, no photo layer. */
 body:not(.dlx-dark) #hero.dlx-madagascar-hero{background-color:#e9ecef!important;background-image:radial-gradient(ellipse at 54% 46%,rgba(220,38,38,.075),transparent 48%),linear-gradient(120deg,#e5e8eb 0%,#f0f1f2 48%,#e3e6e9 100%)!important}
 body:not(.dlx-dark) #hero.dlx-madagascar-hero::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201600%20800%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cpath%20d%3D%22M%20-80%2095%20C%20180%20-50%20300%20245%20520%20125%20S%20850%20-35%201080%20100%20S%201400%20240%201680%2070%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20111%20C%20180%20-34%20300%20261%20520%20141%20S%20850%20-19%201080%20116%20S%201400%20256%201680%2086%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20127%20C%20180%20-18%20300%20277%20520%20157%20S%20850%20-3%201080%20132%20S%201400%20272%201680%20102%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20143%20C%20180%20-2%20300%20293%20520%20173%20S%20850%2013%201080%20148%20S%201400%20288%201680%20118%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20159%20C%20180%2014%20300%20309%20520%20189%20S%20850%2029%201080%20164%20S%201400%20304%201680%20134%22%20fill%3D%22none%22%20stroke%3D%22%23c51f32%22%20stroke-opacity%3D%22.34%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20175%20C%20180%2030%20300%20325%20520%20205%20S%20850%2045%201080%20180%20S%201400%20320%201680%20150%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20191%20C%20180%2046%20300%20341%20520%20221%20S%20850%2061%201080%20196%20S%201400%20336%201680%20166%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20207%20C%20180%2062%20300%20357%20520%20237%20S%20850%2077%201080%20212%20S%201400%20352%201680%20182%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20223%20C%20180%2078%20300%20373%20520%20253%20S%20850%2093%201080%20228%20S%201400%20368%201680%20198%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20239%20C%20180%2094%20300%20389%20520%20269%20S%20850%20109%201080%20244%20S%201400%20384%201680%20214%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20255%20C%20180%20110%20300%20405%20520%20285%20S%20850%20125%201080%20260%20S%201400%20400%201680%20230%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20271%20C%20180%20126%20300%20421%20520%20301%20S%20850%20141%201080%20276%20S%201400%20416%201680%20246%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20287%20C%20180%20142%20300%20437%20520%20317%20S%20850%20157%201080%20292%20S%201400%20432%201680%20262%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20303%20C%20180%20158%20300%20453%20520%20333%20S%20850%20173%201080%20308%20S%201400%20448%201680%20278%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20319%20C%20180%20174%20300%20469%20520%20349%20S%20850%20189%201080%20324%20S%201400%20464%201680%20294%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20335%20C%20180%20190%20300%20485%20520%20365%20S%20850%20205%201080%20340%20S%201400%20480%201680%20310%22%20fill%3D%22none%22%20stroke%3D%22%23c51f32%22%20stroke-opacity%3D%22.34%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20351%20C%20180%20206%20300%20501%20520%20381%20S%20850%20221%201080%20356%20S%201400%20496%201680%20326%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20367%20C%20180%20222%20300%20517%20520%20397%20S%20850%20237%201080%20372%20S%201400%20512%201680%20342%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20383%20C%20180%20238%20300%20533%20520%20413%20S%20850%20253%201080%20388%20S%201400%20528%201680%20358%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20399%20C%20180%20254%20300%20549%20520%20429%20S%20850%20269%201080%20404%20S%201400%20544%201680%20374%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20415%20C%20180%20270%20300%20565%20520%20445%20S%20850%20285%201080%20420%20S%201400%20560%201680%20390%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20431%20C%20180%20286%20300%20581%20520%20461%20S%20850%20301%201080%20436%20S%201400%20576%201680%20406%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20447%20C%20180%20302%20300%20597%20520%20477%20S%20850%20317%201080%20452%20S%201400%20592%201680%20422%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20463%20C%20180%20318%20300%20613%20520%20493%20S%20850%20333%201080%20468%20S%201400%20608%201680%20438%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20479%20C%20180%20334%20300%20629%20520%20509%20S%20850%20349%201080%20484%20S%201400%20624%201680%20454%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20495%20C%20180%20350%20300%20645%20520%20525%20S%20850%20365%201080%20500%20S%201400%20640%201680%20470%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20511%20C%20180%20366%20300%20661%20520%20541%20S%20850%20381%201080%20516%20S%201400%20656%201680%20486%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20527%20C%20180%20382%20300%20677%20520%20557%20S%20850%20397%201080%20532%20S%201400%20672%201680%20502%22%20fill%3D%22none%22%20stroke%3D%22%23c51f32%22%20stroke-opacity%3D%22.34%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20543%20C%20180%20398%20300%20693%20520%20573%20S%20850%20413%201080%20548%20S%201400%20688%201680%20518%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20559%20C%20180%20414%20300%20709%20520%20589%20S%20850%20429%201080%20564%20S%201400%20704%201680%20534%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20575%20C%20180%20430%20300%20725%20520%20605%20S%20850%20445%201080%20580%20S%201400%20720%201680%20550%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20591%20C%20180%20446%20300%20741%20520%20621%20S%20850%20461%201080%20596%20S%201400%20736%201680%20566%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20607%20C%20180%20462%20300%20757%20520%20637%20S%20850%20477%201080%20612%20S%201400%20752%201680%20582%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-80%20623%20C%20180%20478%20300%20773%20520%20653%20S%20850%20493%201080%20628%20S%201400%20768%201680%20598%22%20fill%3D%22none%22%20stroke%3D%22%23525963%22%20stroke-opacity%3D%22.24%22%20stroke-width%3D%221%22%2F%3E%3Cpath%20d%3D%22M%20-160%20-80%20C%2050%20150%20-280%20390%2020%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20-82%20-80%20C%20128%20150%20-202%20390%2098%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20-4%20-80%20C%20206%20150%20-124%20390%20176%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%2074%20-80%20C%20284%20150%20-46%20390%20254%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20152%20-80%20C%20362%20150%2032%20390%20332%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20230%20-80%20C%20440%20150%20110%20390%20410%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20308%20-80%20C%20518%20150%20188%20390%20488%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20386%20-80%20C%20596%20150%20266%20390%20566%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20464%20-80%20C%20674%20150%20344%20390%20644%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20542%20-80%20C%20752%20150%20422%20390%20722%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20620%20-80%20C%20830%20150%20500%20390%20800%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20698%20-80%20C%20908%20150%20578%20390%20878%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20776%20-80%20C%20986%20150%20656%20390%20956%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20854%20-80%20C%201064%20150%20734%20390%201034%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%20932%20-80%20C%201142%20150%20812%20390%201112%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201010%20-80%20C%201220%20150%20890%20390%201190%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201088%20-80%20C%201298%20150%20968%20390%201268%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201166%20-80%20C%201376%20150%201046%20390%201346%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201244%20-80%20C%201454%20150%201124%20390%201424%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201322%20-80%20C%201532%20150%201202%20390%201502%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201400%20-80%20C%201610%20150%201280%20390%201580%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201478%20-80%20C%201688%20150%201358%20390%201658%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201556%20-80%20C%201766%20150%201436%20390%201736%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M%201634%20-80%20C%201844%20150%201514%20390%201814%20800%22%20fill%3D%22none%22%20stroke%3D%22%2359616b%22%20stroke-opacity%3D%22.13%22%20stroke-width%3D%22.8%22%2F%3E%3C%2Fsvg%3E")!important;opacity:.95;mix-blend-mode:multiply}
-</style></body>
+</style>
+<script>
+(() => {
+  const KEY = 'dlx_logistics_reviews_local_v1';
+  const form = document.getElementById('dlxReviewForm');
+  if (!form) return;
+  let rating = 0;
+  const stars = [...document.querySelectorAll('#dlxStarPicker .dlx-star')];
+  const label = document.getElementById('dlxRatingLabel');
+  const notice = document.getElementById('dlxReviewNotice');
+  const read = () => { try { const value = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(value) ? value : []; } catch (_) { return []; } };
+  const choose = value => {
+    rating = value;
+    stars.forEach((star, index) => {
+      const active = index < value;
+      star.classList.toggle('is-selected', active);
+      star.setAttribute('aria-checked', String(Number(star.dataset.rating) === value));
+      if (active) { star.classList.remove('is-selected'); void star.offsetWidth; star.classList.add('is-selected'); }
+    });
+    label.textContent = value ? value + '/5' : 'Choisir une note';
+  };
+  stars.forEach(star => star.addEventListener('click', () => choose(Number(star.dataset.rating))));
+  const render = () => {
+    const reviews = read().sort((a,b) => b.createdAt - a.createdAt);
+    const total = reviews.length;
+    const average = total ? reviews.reduce((sum, item) => sum + Number(item.rating || 0), 0) / total : 0;
+    document.getElementById('dlxReviewAverage').textContent = total ? average.toFixed(1).replace('.', ',') : '—';
+    document.getElementById('dlxReviewCount').textContent = total + (total > 1 ? ' avis' : ' avis');
+    const fiveStars = reviews.filter(item => Number(item.rating) === 5).length;
+    const positive = total ? Math.round(reviews.filter(item => Number(item.rating) >= 4).length / total * 100) : 0;
+    const avgText = total ? average.toFixed(1).replace('.', ',') : '—';
+    const countText = total + (total > 1 ? ' avis' : ' avis');
+    const fiveEl = document.getElementById('dlxReviewFive');
+    const rateEl = document.getElementById('dlxReviewRate');
+    const countBottom = document.getElementById('dlxReviewCountBottom');
+    const averageBottom = document.getElementById('dlxReviewAverageBottom');
+    if (fiveEl) fiveEl.textContent = fiveStars;
+    if (rateEl) rateEl.textContent = total ? positive + '%' : '—';
+    if (countBottom) countBottom.textContent = total;
+    if (averageBottom) averageBottom.textContent = avgText;
+
+    const list = document.getElementById('dlxReviewList'); list.replaceChildren();
+    if (!total) { const empty = document.createElement('p'); empty.className = 'dlx-review-subtitle mt-2'; empty.textContent = 'Aucun avis pour le moment. Soyez le premier à partager votre expérience.'; list.appendChild(empty); return; }
+    reviews.slice(0, 2).forEach(item => {
+      const article = document.createElement('article'); article.className = 'dlx-review-entry';
+      const top = document.createElement('div'); top.className = 'flex items-center justify-between gap-3';
+      const name = document.createElement('strong'); name.className = 'text-[11px] font-bold'; name.style.color = 'var(--dlx-review-name, #303744)'; name.textContent = item.name || 'Client DLX';
+      const score = document.createElement('span'); score.className = 'text-amber-500 text-xs tracking-wide'; score.textContent = '★'.repeat(item.rating) + '☆'.repeat(5-item.rating);
+      top.append(name, score);
+      const comment = document.createElement('p'); comment.textContent = item.comment;
+      const date = document.createElement('span'); date.className = 'dlx-review-date'; date.textContent = new Date(item.createdAt).toLocaleDateString('fr-FR');
+      article.append(top, comment, date); list.appendChild(article);
+    });
+  };
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const comment = document.getElementById('dlxReviewText').value.trim();
+    if (!rating) { notice.textContent = 'Choisissez une note de 1 à 5 étoiles.'; notice.style.color = '#dc2626'; return; }
+    if (!comment) { notice.textContent = 'Ajoutez un court commentaire.'; notice.style.color = '#dc2626'; return; }
+    const reviews = read();
+    reviews.push({ name: document.getElementById('dlxReviewName').value.trim().slice(0,45), rating, comment: comment.slice(0,500), createdAt: Date.now() });
+    try { localStorage.setItem(KEY, JSON.stringify(reviews)); } catch (_) { notice.textContent = 'Enregistrement indisponible sur cet appareil.'; notice.style.color = '#dc2626'; return; }
+    form.reset(); choose(0); render();
+    notice.textContent = 'Merci, votre avis est enregistré sur cet appareil.'; notice.style.color = '#15803d';
+  });
+  window.addEventListener('storage', event => { if (event.key === KEY) render(); });
+  window.addEventListener('focus', render);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+  setInterval(render, 3000);
+  render();
+})();
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const themeButton = document.getElementById('dlxThemeToggle');
+  if (themeButton && themeButton.parentElement !== document.body) document.body.appendChild(themeButton);
+});
+</script>
+
+
+<style id="dlx-auth-theme-language">
+/* DLX access screen — integrated into the existing red / charcoal identity */
+.dlx-auth-gate{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow-y:auto;padding:28px 18px;background:radial-gradient(ellipse at 18% 12%,rgba(225,29,50,.16),transparent 35%),radial-gradient(ellipse at 85% 88%,rgba(225,29,50,.10),transparent 34%),linear-gradient(135deg,#101217,#191a20 58%,#101217);color:#f7f7f8}
+body:not(.dlx-authenticated)>:not(#dlxAuthGate){display:none!important}
+body.dlx-authenticated #dlxAuthGate{display:none}
+.dlx-auth-shell{width:min(100%,430px);padding:clamp(26px,5vw,42px);border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(145deg,rgba(35,36,43,.97),rgba(19,20,25,.98));box-shadow:0 28px 90px rgba(0,0,0,.38),0 0 45px rgba(220,38,38,.08)}
+.dlx-auth-brand{font:900 21px Montserrat,sans-serif;letter-spacing:.035em}.dlx-auth-brand b{color:#ef3348;margin-left:5px}
+.dlx-auth-kicker{display:flex;align-items:center;gap:8px;margin-top:29px;color:#aeb1ba;font-size:9px;font-weight:800;letter-spacing:.19em}
+.dlx-auth-kicker i{width:7px;height:7px;border-radius:50%;background:#ef3348;box-shadow:0 0 10px #ef3348}
+.dlx-auth-shell h1{margin:13px 0 7px;font:800 clamp(25px,5vw,31px)/1.15 Montserrat,sans-serif;letter-spacing:-.04em}
+.dlx-auth-shell>p{color:#aeb1ba;font-size:12px;line-height:1.65}
+#dlxAuthForm{display:grid;gap:9px;margin-top:26px}
+#dlxAuthForm label{margin-top:7px;color:#d8d9de;font-size:10px;font-weight:800;letter-spacing:.06em}
+#dlxAuthForm input{width:100%;height:48px;padding:0 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#111319;color:#fff;font-size:13px;outline:none}
+#dlxAuthForm input:focus{border-color:#ef3348;box-shadow:0 0 0 3px rgba(239,51,72,.13)}
+#dlxAuthForm input::placeholder{color:#777c87}
+#dlxAuthSubmit{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding:14px 16px;border-radius:10px;background:linear-gradient(100deg,#ef3348,#bd1d32);color:#fff;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+#dlxAuthSubmit span{font-size:19px}
+#dlxAuthMessage{min-height:17px;color:#ff8792;font-size:11px;line-height:1.5}
+.dlx-auth-switch{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;color:#aeb1ba;font-size:11px}
+.dlx-auth-switch button{color:#ff6475;font-weight:800}
+.dlx-auth-footnote{margin-top:25px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);color:#858995!important;font-size:9px!important;letter-spacing:.04em}
+.dlx-theme-toggle{position:fixed!important;z-index:2000!important;top:94px!important;right:18px!important;left:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;gap:8px!important;padding:9px 13px!important;border:1px solid rgba(220,38,38,.25)!important;border-radius:999px!important;background:rgba(255,255,255,.92)!important;color:#252a33!important;font-size:10px!important;font-weight:800!important;box-shadow:0 5px 18px rgba(0,0,0,.09)!important;backdrop-filter:blur(12px)}
+.dlx-theme-toggle:hover{transform:translateY(-2px)!important}
+body.dlx-dark .dlx-theme-toggle{background:rgba(29,31,38,.94)!important;color:#f4f5f7!important;border-color:rgba(239,48,56,.38)!important}
+@media(max-width:700px){.dlx-theme-toggle{top:auto!important;right:10px!important;bottom:14px!important;padding:9px 11px!important}}
+/* Consistent dark palette for page surfaces and text, including previously hard-coded light cards */
+body.dlx-dark{background-color:#101217!important;color:#eef0f4!important;color-scheme:dark}
+body.dlx-dark .white-venom-card,body.dlx-dark .dlx-review-entry,body.dlx-dark .dlx-neon-core{background:#20232b!important;border-color:#3b404b!important;color:#f1f2f5!important}
+body.dlx-dark .white-venom-card h1,body.dlx-dark .white-venom-card h2,body.dlx-dark .white-venom-card h3,body.dlx-dark .white-venom-card h4,body.dlx-dark .white-venom-card strong,body.dlx-dark .dlx-review-entry strong{color:#f5f6f8!important}
+body.dlx-dark .white-venom-card p,body.dlx-dark .white-venom-card span,body.dlx-dark .dlx-review-entry p{color:#c4c8d1}
+body.dlx-dark section:not(#hero):not(.bg-brandDark){background-color:#171a21!important;color:#eef0f4!important}
+body.dlx-dark section h1,body.dlx-dark section h2,body.dlx-dark section h3,body.dlx-dark section h4{color:#f2f3f6}
+body.dlx-dark section p,body.dlx-dark section li{color:#c6cad2}
+body.dlx-dark input,body.dlx-dark textarea,body.dlx-dark select{background:#20232b!important;color:#f4f5f7!important;border-color:#454a55!important}
+body.dlx-dark .dlx-chapter-rail{background:rgba(27,29,36,.92)!important;border-color:#414550!important}
+body.dlx-dark .dlx-chapter-rail a{background:#252832!important;border-color:#626775!important}
+body.dlx-dark .dlx-chapter-rail a span{background:#252832!important;color:#ff7b89!important}
+body.dlx-dark #hero.dlx-madagascar-hero{background:radial-gradient(ellipse at 52% 48%,rgba(220,38,38,.11),transparent 48%),linear-gradient(120deg,#111318,#191b21 48%,#101217)!important;color:#f4f4f6}
+body.dlx-dark #hero .dlx-hero-copy h1,body.dlx-dark #hero .dlx-route-center strong{color:#f7f7f8!important}
+body.dlx-dark .dlx-neon-stage{background:radial-gradient(ellipse at 50% 52%,#20232b 0%,#171a21 68%,#14161c 100%)!important}
+body.dlx-dark .dlx-neon-core{background:rgba(30,33,41,.88)!important}
+body.dlx-dark .dlx-core-wordmark{color:#f4f5f7!important}
+body.dlx-dark .dlx-core-tagline,body.dlx-dark .dlx-core-topline{color:#b7bbc5!important}
+body.dlx-dark .dlx-chapter-rail{box-shadow:0 8px 28px rgba(0,0,0,.25)}
+body:not(.dlx-dark){color-scheme:light}
+
+/* Reference-inspired dual pill theme selector */
+.dlx-theme-switch{
+  position:fixed!important;z-index:2000!important;top:22px!important;right:clamp(14px,3vw,42px)!important;left:auto!important;
+  display:flex!important;align-items:center!important;gap:10px!important;padding:5px!important;
+  border-radius:999px!important;background:rgba(225,225,225,.48)!important;
+  -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
+}
+.dlx-theme-option{
+  position:relative!important;isolation:isolate;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:10px!important;min-height:54px!important;min-width:174px!important;padding:8px 20px!important;
+  border:1px solid rgba(255,255,255,.95)!important;border-radius:999px!important;
+  background:linear-gradient(145deg,#fff,#f5f5f5)!important;color:#202124!important;
+  box-shadow:inset 0 0 0 4px rgba(185,185,185,.42),0 7px 15px rgba(0,0,0,.12)!important;
+  font-family:inherit!important;font-size:13px!important;font-weight:600!important;line-height:1.1!important;letter-spacing:.01em!important;white-space:nowrap!important;
+  cursor:pointer!important;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease!important;
+}
+.dlx-theme-option:hover{transform:translateY(-2px)!important;box-shadow:inset 0 0 0 4px rgba(185,185,185,.5),0 11px 20px rgba(0,0,0,.16)!important}
+.dlx-theme-option[aria-pressed="true"][data-theme-choice="light"]{background:#fff!important;color:#151515!important;border-color:#fff!important;box-shadow:inset 0 0 0 4px #d1d1d1,0 8px 18px rgba(0,0,0,.14)!important}
+.dlx-theme-option[data-theme-choice="dark"]{background:linear-gradient(145deg,#353535,#252525)!important;color:#fff!important;border-color:#222!important;box-shadow:inset 0 0 0 4px rgba(205,205,205,.58),0 8px 18px rgba(0,0,0,.2)!important}
+.dlx-theme-option[aria-pressed="true"][data-theme-choice="dark"]{background:linear-gradient(145deg,#383838,#242424)!important;box-shadow:inset 0 0 0 4px #bcbcbc,0 9px 20px rgba(0,0,0,.24)!important}
+.dlx-theme-icon{display:grid!important;place-items:center!important;width:30px!important;height:30px!important;flex:0 0 30px!important;
+  border-radius:50%!important;background:transparent!important;color:inherit!important;font-size:29px!important;line-height:1!important;
+  box-shadow:none!important}
+.dlx-theme-text{display:inline!important;font-size:13px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;white-space:nowrap!important}
+body.dlx-dark .dlx-theme-switch{background:rgba(30,30,30,.46)!important}
+body.dlx-dark .dlx-theme-option[data-theme-choice="light"]{background:linear-gradient(145deg,#fff,#f4f4f4)!important;color:#222!important;border-color:#fff!important}
+body.dlx-dark .dlx-theme-option[data-theme-choice="dark"]{background:linear-gradient(145deg,#383838,#252525)!important;color:#fff!important;border-color:#222!important}
+@media(max-width:700px){
+ .dlx-theme-switch{top:auto!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;right:50%!important;left:auto!important;transform:translateX(50%)!important;
+   width:max-content!important;max-width:calc(100vw - 20px)!important;gap:6px!important;padding:4px!important}
+ .dlx-theme-option{min-width:0!important;min-height:48px!important;gap:7px!important;padding:7px 12px!important;flex:1 1 auto!important}
+ .dlx-theme-icon{width:25px!important;height:25px!important;flex-basis:25px!important;font-size:24px!important}
+ .dlx-theme-text{font-size:11px!important}
+}
+@media(max-width:380px){.dlx-theme-option{gap:5px!important;padding:7px 9px!important}.dlx-theme-text{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){.dlx-theme-option{transition:none!important}}
+
+</style>
+<script>
+/* Account demo: local to this browser. For production authentication, connect a server/auth provider. */
+(() => {
+  const USERS_KEY = 'dlx_local_accounts_v1';
+  const SESSION_KEY = 'dlx_local_session_v1';
+  const gate = document.getElementById('dlxAuthGate');
+  const form = document.getElementById('dlxAuthForm');
+  if (!gate || !form) return;
+  const emailInput = document.getElementById('dlxAuthEmail');
+  const passwordInput = document.getElementById('dlxAuthPassword');
+  const message = document.getElementById('dlxAuthMessage');
+  const submit = document.getElementById('dlxAuthSubmit');
+  const switchBtn = document.getElementById('dlxAuthSwitch');
+  const title = document.getElementById('dlxAuthTitle');
+  const subtitle = document.getElementById('dlxAuthSubtitle');
+  const switchText = document.getElementById('dlxAuthSwitchText');
+  let creating = false;
+  const readUsers = () => { try { return JSON.parse(localStorage.getItem(USERS_KEY) || '{}') || {}; } catch (_) { return {}; } };
+  const createPersonalId = users => {
+    const used = new Set(Object.values(users).map(account => account?.personalId).filter(Boolean));
+    let id;
+    do {
+      const bytes = crypto.getRandomValues(new Uint8Array(4));
+      id = 'DLX-' + [...bytes].map(value => value.toString(16).padStart(2,'0')).join('').toUpperCase();
+    } while (used.has(id));
+    return id;
+  };
+  const derivePassword = async (value, saltHex) => {
+    if (!window.crypto?.subtle) throw new Error('SECURE_STORAGE_UNAVAILABLE');
+    const salt = saltHex ? Uint8Array.from(saltHex.match(/.{1,2}/g).map(x => parseInt(x,16))) : crypto.getRandomValues(new Uint8Array(16));
+    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(value), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'}, key, 256);
+    const hash = [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2,'0')).join('');
+    return {hash, salt:[...salt].map(b => b.toString(16).padStart(2,'0')).join('')};
+  };
+  const enter = email => {
+    try { localStorage.setItem(SESSION_KEY, email); } catch (_) {}
+    document.body.classList.add('dlx-authenticated');
+    gate.setAttribute('aria-hidden','true');
+  };
+  try {
+    const session = localStorage.getItem(SESSION_KEY);
+    if (session && readUsers()[session]) enter(session);
+  } catch (_) {}
+  const setMode = value => {
+    creating = value;
+    title.textContent = creating ? 'Créer votre espace' : 'Accéder à votre espace';
+    subtitle.textContent = creating ? 'Créez vos identifiants pour accéder à DLX LOGISTICS.' : 'Connectez-vous pour continuer sur DLX LOGISTICS.';
+    submit.innerHTML = creating ? 'Créer mon compte <span>→</span>' : 'Se connecter <span>→</span>';
+    switchText.textContent = creating ? 'Vous avez déjà un compte ?' : 'Nouveau sur DLX LOGISTICS ?';
+    switchBtn.textContent = creating ? 'Se connecter' : 'Créer un compte';
+    passwordInput.autocomplete = creating ? 'new-password' : 'current-password';
+    passwordInput.value = '';
+    message.textContent = '';
+  };
+  switchBtn.addEventListener('click', () => setMode(!creating));
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    message.textContent = '';
+    const email = emailInput.value.trim().toLowerCase();
+    const password = passwordInput.value;
+    if (!email || password.length < 8) { message.textContent = 'Utilisez une adresse e-mail valide et un mot de passe de 8 caractères minimum.'; return; }
+    submit.disabled = true;
+    try {
+      const users = readUsers();
+      const derived = await derivePassword(password, creating ? null : users[email]?.salt);
+      if (creating) {
+        if (users[email]) { message.textContent = 'Cette adresse e-mail possède déjà un compte. Connectez-vous.'; return; }
+        users[email] = { personalId: createPersonalId(users), passwordHash: derived.hash, salt: derived.salt, createdAt: Date.now() };
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+      } else {
+        if (!users[email] || users[email].passwordHash !== derived.hash) { message.textContent = 'Adresse e-mail ou mot de passe incorrect.'; return; }
+      }
+      enter(email);
+    } catch (error) {
+      message.textContent = error.message === 'SECURE_STORAGE_UNAVAILABLE'
+        ? 'Connexion indisponible dans ce navigateur. Utilisez un navigateur récent en HTTPS.'
+        : 'Impossible d’enregistrer ce compte sur cet appareil.';
+    } finally { submit.disabled = false; }
+  });
+  window.dlxLogout = () => {
+    try { localStorage.removeItem(SESSION_KEY); } catch (_) {}
+    document.body.classList.remove('dlx-authenticated');
+    gate.removeAttribute('aria-hidden');
+    setMode(false);
+  };
+})();
+</script>
+
+<style id="dlx-compact-floating-theme-control">
+  /* Small, fixed theme control: stays in its own corner while the page scrolls. */
+  .dlx-theme-toggle{
+    position:fixed!important;
+    left:clamp(14px,2.2vw,26px)!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:calc(18px + env(safe-area-inset-bottom))!important;
+    z-index:950!important;
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    min-height:44px!important;
+    padding:0!important;
+    display:grid!important;
+    place-items:center!important;
+    border:1px solid rgba(125,125,125,.32)!important;
+    border-radius:14px!important;
+    background:rgba(255,255,255,.92)!important;
+    color:#24262b!important;
+    box-shadow:0 5px 18px rgba(0,0,0,.13)!important;
+    -webkit-backdrop-filter:blur(12px)!important;
+    backdrop-filter:blur(12px)!important;
+    cursor:pointer!important;
+    transition:transform .18s ease,background .2s ease,color .2s ease,box-shadow .2s ease!important;
+  }
+  .dlx-theme-toggle:hover{transform:translateY(-2px)!important;box-shadow:0 8px 22px rgba(0,0,0,.18)!important}
+  .dlx-theme-toggle:focus-visible{outline:3px solid #e52d43!important;outline-offset:3px!important}
+  .dlx-theme-toggle-icon{font-family:Arial,sans-serif!important;font-size:23px!important;line-height:1!important;display:block!important}
+  body.dlx-dark .dlx-theme-toggle{background:rgba(35,36,41,.94)!important;color:#fff!important;border-color:rgba(255,255,255,.24)!important;box-shadow:0 5px 18px rgba(0,0,0,.34)!important}
+  @media(max-width:600px){.dlx-theme-toggle{left:14px!important;bottom:calc(14px + env(safe-area-inset-bottom))!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;border-radius:13px!important}}
+  @media(prefers-reduced-motion:reduce){.dlx-theme-toggle{transition:none!important}}
+</style>
+
+
+
+<!-- ================= PARAMÈTRES DU COMPTE ================= -->
+<section id="dlxSettingsPanel" class="dlx-settings-panel" aria-label="Paramètres du compte" hidden>
+ <div class="dlx-settings-heading"><div><span>ESPACE PERSONNEL</span><h2>Paramètres du compte</h2></div><button type="button" id="dlxSettingsClose" aria-label="Fermer les paramètres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+ <div class="dlx-account-id-card"><span>IDENTIFIANT PERSONNEL</span><div><strong id="dlxAccountPersonalId">DLX-——————</strong><button type="button" id="dlxCopyAccountId" aria-label="Copier mon identifiant">Copier</button></div><p>Votre identifiant unique DLX LOGISTICS.</p></div>
+ <div class="dlx-settings-section"><h3>Sécurité du compte</h3>
+  <label for="dlxCurrentPassword">Mot de passe actuel</label><input id="dlxCurrentPassword" type="password" autocomplete="current-password" placeholder="Saisissez votre mot de passe actuel">
+  <label for="dlxNewPassword">Nouveau mot de passe</label><input id="dlxNewPassword" type="password" autocomplete="new-password" minlength="8" placeholder="8 caractères minimum">
+  <label for="dlxConfirmPassword">Confirmer le nouveau mot de passe</label><input id="dlxConfirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Répétez le nouveau mot de passe">
+  <label class="dlx-show-password"><input type="checkbox" id="dlxShowPasswords"> Afficher les mots de passe</label>
+  <button type="button" id="dlxChangePassword" class="dlx-settings-secondary">Confirmer le changement</button><p id="dlxPasswordMessage" class="dlx-settings-message" role="status" aria-live="polite"></p>
+ </div>
+ <div class="dlx-settings-footer"><span>Compte actif sur cet appareil</span><button type="button" id="dlxLogoutButton" class="dlx-logout-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg>Se déconnecter</button></div>
+</section>
+<style id="dlx-professional-utility-redesign">
+#dlxUtilityControls{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto;margin-left:4px}#dlxUtilityControls button{min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 12px;border-radius:10px;font:700 10px Inter,sans-serif;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}.dlx-utility-icon{width:16px;height:16px;flex:0 0 16px}
+#dlxUtilityControls .dlx-theme-toggle{position:static!important;inset:auto!important;transform:none!important;width:auto!important;height:40px!important;min-width:0!important;min-height:40px!important;padding:0 12px!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:10px!important;background:rgba(255,255,255,.07)!important;color:#fff!important;box-shadow:none!important;backdrop-filter:none!important}#dlxUtilityControls .dlx-theme-toggle:hover,#dlxUtilityControls .dlx-settings-toggle:hover{transform:translateY(-1px)!important;background:rgba(255,255,255,.14)!important}#dlxUtilityControls .dlx-settings-toggle{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff}body.dlx-dark #dlxUtilityControls button{border-color:rgba(255,255,255,.18)!important;color:#f5f6f8!important}
+#helpWidget.dlx-help-dock{position:fixed;left:22px;bottom:20px;z-index:800;display:flex;flex-direction:column;align-items:flex-start;gap:10px}.dlx-help-toggle{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 16px;border:1px solid rgba(255,255,255,.14);border-radius:11px;background:#171a21;color:#fff;box-shadow:0 8px 24px rgba(10,15,25,.18);font-size:11px;font-weight:800;cursor:pointer}.dlx-help-toggle svg{width:18px;height:18px;color:#ff6675}.dlx-help-toggle:hover{background:#252a34;transform:translateY(-2px)}
+.dlx-help-panel{width:min(390px,calc(100vw - 28px));max-height:min(690px,calc(100vh - 105px));overflow:hidden;border:1px solid rgba(120,130,145,.24);border-radius:16px;background:#fff;color:#252b35;box-shadow:0 18px 55px rgba(10,15,25,.22);transform-origin:bottom left;animation:dlxHelpIn .2s ease-out}.dlx-help-panel[hidden],.dlx-settings-panel[hidden]{display:none!important}@keyframes dlxHelpIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.dlx-help-head{position:relative;padding:21px 22px 18px;background:linear-gradient(135deg,#202630,#11151d);color:#fff}.dlx-help-brandline{display:flex;align-items:center;gap:8px;color:#ff9aa4;font-size:9px;font-weight:900;letter-spacing:.15em}.dlx-help-status{width:7px;height:7px;border-radius:50%;background:#35c98a;box-shadow:0 0 0 4px rgba(53,201,138,.13)}.dlx-help-head h2{margin-top:13px;font:800 20px/1.2 Montserrat,sans-serif;color:#fff}.dlx-help-head>p{margin-top:7px;color:#c1c7d0;font-size:11px;line-height:1.5}.dlx-help-close{position:absolute;right:15px;top:15px;display:grid;place-items:center;width:30px;height:30px;border:1px solid #ffffff2b;border-radius:8px;color:#fff}.dlx-help-close svg{width:15px;height:15px}.dlx-help-content{max-height:calc(min(690px,100vh - 105px) - 126px);overflow:auto;padding:15px 17px 17px}.dlx-help-search{display:flex;align-items:center;gap:9px;padding:0 11px;height:39px;border:1px solid #dfe3e9;border-radius:9px;background:#f7f8fa}.dlx-help-search svg{width:16px;height:16px;color:#818a98;flex:0 0 16px}.dlx-help-search input{width:100%;border:0!important;outline:0!important;background:transparent!important;color:#222a35!important;font-size:11px!important}.dlx-help-category{margin:17px 0 7px;color:#9a2535;font-size:9px;font-weight:900;letter-spacing:.13em}.dlx-help-questions{display:grid;gap:6px}.dlx-help-item{border:1px solid #e6e9ee;border-radius:9px;background:#fff}.dlx-help-item summary{position:relative;padding:11px 32px 11px 12px;color:#29313d;font-size:11px;font-weight:750;line-height:1.45;cursor:pointer;list-style:none}.dlx-help-item summary::-webkit-details-marker{display:none}.dlx-help-item summary:after{content:'+';position:absolute;right:12px;top:9px;color:#b42336;font-size:17px;font-weight:500}.dlx-help-item[open] summary:after{content:'−'}.dlx-help-item p{padding:0 12px 12px;color:#657080;font-size:10px;line-height:1.65}.dlx-help-no-result{padding:18px 5px;color:#7b8491;text-align:center;font-size:11px}.dlx-help-contact{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;padding:12px;border-radius:9px;background:#b91f32;color:#fff;font-size:10px;font-weight:800;text-align:center}.dlx-help-contact svg{width:17px;height:17px}
+body.dlx-dark .dlx-help-panel,body.dlx-dark .dlx-help-content{background:#1d222b;color:#f1f3f6}body.dlx-dark .dlx-help-panel{border-color:#3b424e}body.dlx-dark .dlx-help-search{background:#252b35;border-color:#424a57}body.dlx-dark .dlx-help-search input{color:#f3f5f8!important}body.dlx-dark .dlx-help-item{background:#242a34;border-color:#3b424e}body.dlx-dark .dlx-help-item summary{color:#f0f2f5}body.dlx-dark .dlx-help-item p{color:#c0c7d2}body.dlx-dark .dlx-help-category{color:#ff7b89}
+.dlx-settings-panel{position:fixed;z-index:1200;top:88px;right:clamp(12px,2.5vw,34px);width:min(390px,calc(100vw - 24px));max-height:calc(100vh - 108px);overflow:auto;padding:19px;border:1px solid #e0e4ea;border-radius:15px;background:#fff;color:#252c37;box-shadow:0 18px 55px rgba(10,15,25,.2)}.dlx-settings-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:14px;border-bottom:1px solid #e9ecf0}.dlx-settings-heading span{color:#a32135;font-size:8px;font-weight:900;letter-spacing:.16em}.dlx-settings-heading h2{margin-top:5px;font:800 17px Montserrat,sans-serif;color:#202631}.dlx-settings-heading button{display:grid;place-items:center;width:29px;height:29px;border:1px solid #e2e5ea;border-radius:8px;color:#667080}.dlx-settings-heading svg{width:14px;height:14px}.dlx-account-summary{display:flex;align-items:center;gap:11px;padding:15px 0;border-bottom:1px solid #e9ecf0}.dlx-profile-avatar{display:grid;place-items:center;width:43px;height:43px;overflow:hidden;border-radius:12px;background:#202630;color:#fff;font:800 13px Montserrat,sans-serif}.dlx-profile-avatar img{width:100%;height:100%;object-fit:cover}.dlx-account-summary strong,.dlx-account-summary span{display:block}.dlx-account-summary strong{font-size:12px;color:#202631}.dlx-account-summary span{margin-top:3px;color:#7b8491;font-size:10px}.dlx-settings-section{display:grid;gap:7px;padding:15px 0;border-bottom:1px solid #e9ecf0}.dlx-settings-section h3{margin-bottom:3px;color:#242c38;font:800 11px Montserrat,sans-serif}.dlx-settings-section label{margin-top:4px;color:#657080;font-size:9px;font-weight:800}.dlx-settings-section input:not([type=file]){width:100%;height:38px;padding:0 10px;border:1px solid #dce1e8;border-radius:8px;background:#f8f9fb;color:#202630;font-size:11px}.dlx-settings-section input[type=file]{width:100%;font-size:10px;color:#657080}.dlx-settings-hint{color:#87909d;font-size:9px;line-height:1.5}.dlx-settings-primary,.dlx-settings-secondary{min-height:37px;margin-top:5px;padding:0 12px;border-radius:8px;font-size:10px;font-weight:800}.dlx-settings-primary{background:#b91f32;color:#fff}.dlx-settings-secondary{border:1px solid #d9dee6;background:#fff;color:#333d4b}.dlx-settings-message{min-height:13px;color:#21865e;font-size:9px;line-height:1.5}.dlx-settings-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px}.dlx-settings-footer>span{color:#818a97;font-size:9px}.dlx-logout-button{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid #f0cbd0;border-radius:8px;background:#fff7f8;color:#a51d30;font-size:10px;font-weight:800}.dlx-logout-button svg{width:14px;height:14px}
+body.dlx-dark .dlx-settings-panel{background:#1d222b;border-color:#3d4552;color:#edf0f4}body.dlx-dark .dlx-settings-heading{border-color:#3b424e}body.dlx-dark .dlx-settings-heading h2,body.dlx-dark .dlx-settings-section h3,body.dlx-dark .dlx-account-summary strong{color:#f1f3f6}body.dlx-dark .dlx-account-summary,body.dlx-dark .dlx-settings-section{border-color:#3b424e}body.dlx-dark .dlx-settings-section label,body.dlx-dark .dlx-settings-footer>span{color:#b3bdc9}body.dlx-dark .dlx-settings-section input:not([type=file]){background:#252b35;border-color:#454e5b;color:#f5f6f8}body.dlx-dark .dlx-settings-secondary{background:#252b35;border-color:#454e5b;color:#f1f3f6}body.dlx-dark .dlx-logout-button{background:#351e25;border-color:#71313e;color:#ff9aa5}
+#dlx-reviews .dlx-reviews-list-heading .dlx-reviews-kicker{color:#9f1d30!important}#dlx-reviews .dlx-reviews-list-heading h3{color:#9f1d30!important}#dlx-reviews .dlx-reviews-intro h2 strong{color:#ff6576!important}body.dlx-dark #dlx-reviews .dlx-reviews-list-heading h3{color:#ff6576!important}
+@media(max-width:1279px){#dlxUtilityControls .dlx-theme-label{display:none}#dlxUtilityControls button{width:40px;padding:0!important}}@media(max-width:700px){#dlxUtilityControls{gap:5px;margin-left:auto}#dlxUtilityControls button{width:36px!important;min-height:36px!important;height:36px!important;border-radius:9px!important}#dlxUtilityControls .dlx-utility-icon{width:15px;height:15px}#helpWidget.dlx-help-dock{left:12px;bottom:12px}.dlx-help-toggle{min-height:41px;padding:0 12px}.dlx-help-panel{width:min(370px,calc(100vw - 24px));max-height:calc(100vh - 82px)}.dlx-help-content{max-height:calc(100vh - 205px)}.dlx-settings-panel{top:76px;right:10px;max-height:calc(100vh - 88px);padding:15px}}@media(prefers-reduced-motion:reduce){.dlx-help-panel{animation:none}}
+
+/* Ajustements d’interface demandés : navigation d’aide, thème conservé, réglages fixes */
+.dlx-theme-toggle{position:fixed!important;z-index:3000!important;top:50%!important;right:18px!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;width:auto!important;height:auto!important;min-height:44px!important;padding:10px 14px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border-radius:999px!important;background:rgba(255,255,255,.96)!important;color:#252a33!important;border:1px solid rgba(220,38,38,.28)!important;box-shadow:0 8px 26px rgba(10,15,25,.16)!important;backdrop-filter:blur(14px)!important}
+.dlx-theme-toggle:hover{transform:translateY(calc(-50% - 2px))!important}
+#dlxUtilityControls .dlx-theme-toggle{position:fixed!important;z-index:3000!important;top:50%!important;right:18px!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;width:auto!important;height:auto!important;min-height:44px!important;padding:10px 14px!important;display:inline-flex!important;gap:8px!important;border-radius:999px!important;background:rgba(255,255,255,.96)!important;color:#252a33!important;border:1px solid rgba(220,38,38,.28)!important;box-shadow:0 8px 26px rgba(10,15,25,.16)!important}
+#dlxUtilityControls .dlx-theme-toggle:hover{transform:translateY(calc(-50% - 2px))!important}
+body.dlx-dark .dlx-theme-toggle{background:rgba(28,30,37,.97)!important;color:#fff!important;border-color:rgba(255,90,105,.45)!important}
+.dlx-help-nav-tab{margin-left:5px;padding:9px 12px;border:1px solid rgba(255,255,255,.2);border-radius:9px;background:rgba(255,255,255,.07);color:#fff;font:700 10px Inter,sans-serif;letter-spacing:.045em;white-space:nowrap;transition:background .2s,border-color .2s}
+.dlx-help-nav-tab:hover,.dlx-help-nav-tab[aria-expanded="true"]{background:rgba(220,38,56,.2);border-color:rgba(255,105,120,.65)}
+#helpPanel.dlx-help-panel{position:fixed;z-index:1500;top:88px;right:clamp(16px,3vw,44px);bottom:auto;left:auto;width:min(420px,calc(100vw - 32px));max-height:calc(100vh - 108px);overflow:hidden;border:1px solid #dfe3e8;border-radius:20px;background:linear-gradient(145deg,#fbfcfd 0%,#f0f2f4 100%);color:#252b34;box-shadow:0 24px 75px rgba(20,28,38,.22);transform-origin:top right}
+#helpPanel .dlx-help-head{padding:22px 22px 17px;background:transparent;color:#252b34;border-bottom:1px solid #dfe3e8}
+#helpPanel .dlx-help-brandline{color:#a32135}
+#helpPanel .dlx-help-head h2{color:#202630}
+#helpPanel .dlx-help-head>p{color:#5d6672}
+#helpPanel .dlx-help-close{border-color:#d3d9e0;color:#596270}
+#helpPanel .dlx-help-content{max-height:calc(100vh - 260px);padding:15px 17px 18px;background:transparent}
+#helpPanel .dlx-help-item{background:rgba(255,255,255,.78);border-color:#dfe3e8}
+#helpPanel .dlx-help-item summary{color:#29313d}
+#helpPanel .dlx-help-item p{color:#657080}
+#helpPanel .dlx-help-category{color:#9a2535}
+#helpPanel .dlx-help-contact{background:linear-gradient(100deg,#d92b3b,#bd1d30);border-radius:10px}
+body.dlx-dark #helpPanel.dlx-help-panel{background:linear-gradient(145deg,#252932,#191d25);border-color:#3b414c;color:#eef0f3}
+body.dlx-dark #helpPanel .dlx-help-head{background:transparent;border-color:#3b414c}
+body.dlx-dark #helpPanel .dlx-help-brandline{color:#ff9aa4}
+body.dlx-dark #helpPanel .dlx-help-head h2{color:#f5f6f8}
+body.dlx-dark #helpPanel .dlx-help-head>p{color:#c0c5ce}
+body.dlx-dark #helpPanel .dlx-help-close{color:#e4e7eb;border-color:#48505c}
+body.dlx-dark #helpPanel .dlx-help-item{background:rgba(41,47,57,.8);border-color:#454d59}
+body.dlx-dark #helpPanel .dlx-help-item summary{color:#f0f2f5}
+body.dlx-dark #helpPanel .dlx-help-item p{color:#c0c7d2}
+.dlx-settings-toggle{position:fixed;z-index:3200;right:18px;bottom:18px;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:0 16px;border:1px solid #d9dee6;border-radius:11px;background:#252b34;color:#fff;box-shadow:0 9px 28px rgba(10,15,25,.2);font:800 10px Inter,sans-serif;letter-spacing:.04em;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.dlx-settings-toggle svg{width:17px;height:17px;flex:0 0 17px}
+.dlx-settings-toggle:hover,.dlx-settings-toggle[aria-expanded="true"]{transform:translateY(-2px);background:#a91e31;box-shadow:0 12px 30px rgba(10,15,25,.24)}
+.dlx-settings-panel{top:auto!important;right:18px!important;bottom:76px!important;width:min(390px,calc(100vw - 28px))!important;max-height:min(78vh,680px)!important;border-radius:16px!important;background:linear-gradient(145deg,#fbfcfd 0%,#f0f2f4 100%)!important;border-color:#dfe3e8!important;box-shadow:0 24px 75px rgba(20,28,38,.22)!important}
+body.dlx-dark .dlx-settings-panel{background:linear-gradient(145deg,#252932,#191d25)!important;border-color:#3b414c!important}
+body.dlx-dark .dlx-settings-toggle{background:#252932;border-color:#48505c;color:#f5f6f8}
+@media(max-width:1279px){.dlx-theme-toggle,#dlxUtilityControls .dlx-theme-toggle{width:44px!important;height:44px!important;padding:0!important}.dlx-theme-toggle .dlx-theme-label{display:none}}
+@media(max-width:700px){.dlx-theme-toggle,#dlxUtilityControls .dlx-theme-toggle{right:12px!important;width:42px!important;height:42px!important}.dlx-help-nav-tab{font-size:9px;padding:8px 9px}#helpPanel.dlx-help-panel{top:84px;right:10px;width:min(390px,calc(100vw - 20px));max-height:calc(100vh - 100px)}#helpPanel .dlx-help-content{max-height:calc(100vh - 240px)}.dlx-settings-toggle{right:12px;bottom:12px;min-height:43px;padding:0 13px}.dlx-settings-panel{right:12px!important;bottom:66px!important;max-height:calc(100vh - 88px)!important}}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const $=id=>document.getElementById(id),helpPanel=$('helpPanel'),helpClose=$('helpClose'),helpTriggers=[...document.querySelectorAll('[data-dlx-help-open]')],settingsToggle=$('dlxSettingsToggle'),settingsPanel=$('dlxSettingsPanel'),settingsClose=$('dlxSettingsClose'),themeToggle=$('dlxThemeToggle');
+ const USERS='dlx_local_accounts_v1',SESSION='dlx_local_session_v1',users=()=>{try{return JSON.parse(localStorage.getItem(USERS)||'{}')||{}}catch(_){return{}}},email=()=>{try{return localStorage.getItem(SESSION)||''}catch(_){return''}},user=()=>users()[email()];
+ const ensurePersonalId=()=>{const e=email(),all=users(),u=all[e];if(!u)return '';if(!u.personalId){const used=new Set(Object.values(all).map(a=>a?.personalId).filter(Boolean));let id;do{const bytes=crypto.getRandomValues(new Uint8Array(4));id='DLX-'+[...bytes].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase()}while(used.has(id));u.personalId=id;all[e]=u;try{localStorage.setItem(USERS,JSON.stringify(all))}catch(_){}}return u.personalId||''};
+ const renderAccount=()=>{const id=ensurePersonalId();$('dlxAccountPersonalId').textContent=id||'Indisponible';$('dlxPasswordMessage').textContent='';['dlxCurrentPassword','dlxNewPassword','dlxConfirmPassword'].forEach(k=>$(k).value='');$('dlxShowPasswords').checked=false;['dlxCurrentPassword','dlxNewPassword','dlxConfirmPassword'].forEach(k=>$(k).type='password')};
+ const closeSettings=()=>{settingsPanel.hidden=true;settingsToggle.setAttribute('aria-expanded','false')};
+ const closeHelp=()=>{helpPanel.hidden=true;helpTriggers.forEach(b=>b.setAttribute('aria-expanded','false'))};
+ settingsToggle?.addEventListener('click',()=>{if(settingsPanel.hidden){renderAccount();settingsPanel.hidden=false;settingsToggle.setAttribute('aria-expanded','true');closeHelp()}else closeSettings()});settingsClose?.addEventListener('click',closeSettings);
+ helpTriggers.forEach(btn=>btn.addEventListener('click',()=>{const open=helpPanel.hidden;helpPanel.hidden=!open;helpTriggers.forEach(b=>b.setAttribute('aria-expanded',String(open)));if(open)closeSettings()}));helpClose?.addEventListener('click',closeHelp);
+ document.addEventListener('click',e=>{if(!settingsPanel.hidden&&!settingsPanel.contains(e.target)&&!settingsToggle.contains(e.target))closeSettings();if(!helpPanel.hidden&&!helpPanel.contains(e.target)&&!e.target.closest('[data-dlx-help-open]'))closeHelp()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSettings();closeHelp()}});
+ const derive=async(v,saltHex)=>{if(!crypto?.subtle)throw Error('SECURE_STORAGE_UNAVAILABLE');const salt=Uint8Array.from(saltHex.match(/.{1,2}/g).map(x=>parseInt(x,16))),key=await crypto.subtle.importKey('raw',new TextEncoder().encode(v),'PBKDF2',false,['deriveBits']),bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'},key,256);return[...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,'0')).join('')};
+ $('dlxChangePassword')?.addEventListener('click',async()=>{const m=$('dlxPasswordMessage');m.textContent='';const e=email(),all=users(),u=all[e],cur=$('dlxCurrentPassword').value,n=$('dlxNewPassword').value,c=$('dlxConfirmPassword').value;if(!u){m.textContent='Session introuvable. Reconnectez-vous.';return}if(n.length<8){m.textContent='Le nouveau mot de passe doit contenir au moins 8 caractères.';return}if(n!==c){m.textContent='Les deux nouveaux mots de passe ne correspondent pas.';return}if(!window.confirm('Confirmer le changement de votre mot de passe ?')){m.textContent='Modification annulée.';return}try{if(await derive(cur,u.salt)!==u.passwordHash){m.textContent='Le mot de passe actuel est incorrect.';return}const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(x=>x.toString(16).padStart(2,'0')).join('');u.salt=salt;u.passwordHash=await derive(n,salt);all[e]=u;localStorage.setItem(USERS,JSON.stringify(all));['dlxCurrentPassword','dlxNewPassword','dlxConfirmPassword'].forEach(id=>$(id).value='');m.textContent='Mot de passe modifié avec succès.'}catch(_){m.textContent='Modification indisponible dans ce navigateur.'}});
+ $('dlxShowPasswords')?.addEventListener('change',event=>{const type=event.target.checked?'text':'password';['dlxCurrentPassword','dlxNewPassword','dlxConfirmPassword'].forEach(id=>$(id).type=type)});
+ $('dlxCopyAccountId')?.addEventListener('click',async()=>{const id=$('dlxAccountPersonalId').textContent;try{await navigator.clipboard.writeText(id);$('dlxCopyAccountId').textContent='Copié';setTimeout(()=>{$('dlxCopyAccountId').textContent='Copier'},1400)}catch(_){$('dlxCopyAccountId').textContent='Copie indisponible'}});
+ $('dlxLogoutButton')?.addEventListener('click',()=>{closeSettings();if(typeof window.dlxLogout==='function')window.dlxLogout()});
+ const updateTheme=()=>{if(!themeToggle)return;const dark=document.body.classList.contains('dlx-dark'),label=themeToggle.querySelector('.dlx-theme-label'),icon=themeToggle.querySelector('.dlx-theme-toggle-icon');if(label)label.textContent=dark?'Mode clair':'Mode sombre';if(icon)icon.innerHTML=dark?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>':'<path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.6 8.6 0 1 0 20.2 15.2Z"/>'};
+ const observer=new MutationObserver(updateTheme);observer.observe(document.body,{attributes:true,attributeFilter:['class']});updateTheme();
+ // Le sélecteur de thème conserve sa position flottante d’origine.
+});
+</script>
+
+
+
+<style id="dlx-swapped-help-settings-layout">
+/* Paramètres dans la barre supérieure */
+#dlxUtilityControls .dlx-settings-toggle{
+  position:static!important;inset:auto!important;transform:none!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:40px!important;height:40px!important;width:auto!important;padding:0 12px!important;
+  border:1px solid rgba(255,255,255,.2)!important;border-radius:10px!important;
+  background:rgba(255,255,255,.08)!important;color:#fff!important;
+  box-shadow:none!important;font:700 10px Inter,sans-serif!important;letter-spacing:.04em!important;
+}
+#dlxUtilityControls .dlx-settings-toggle:hover,
+#dlxUtilityControls .dlx-settings-toggle[aria-expanded="true"]{
+  transform:translateY(-1px)!important;background:rgba(255,255,255,.16)!important;
+}
+#dlxUtilityControls .dlx-settings-toggle svg{width:16px!important;height:16px!important;flex:0 0 16px!important}
+body.dlx-dark #dlxUtilityControls .dlx-settings-toggle{color:#f5f6f8!important;border-color:rgba(255,255,255,.2)!important}
+/* Panneau paramètres ancré sous la barre supérieure */
+.dlx-settings-panel{
+  top:88px!important;right:clamp(12px,2.5vw,34px)!important;bottom:auto!important;
+  max-height:calc(100vh - 108px)!important;
+}
+/* Centre d’aide en bas à gauche, au-dessus de son bouton, à distance du bandeau cookies */
+#helpWidget.dlx-help-dock{
+  position:fixed!important;left:22px!important;right:auto!important;bottom:22px!important;
+  z-index:1800!important;display:flex!important;flex-direction:column!important;
+  align-items:flex-start!important;gap:10px!important;
+}
+#helpWidget .dlx-help-toggle{
+  position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;
+  min-height:44px!important;padding:0 16px!important;border:1px solid rgba(255,255,255,.16)!important;
+  border-radius:11px!important;background:#171a21!important;color:#fff!important;
+  box-shadow:0 8px 24px rgba(10,15,25,.2)!important;font:800 11px Inter,sans-serif!important;
+}
+#helpWidget .dlx-help-toggle svg{width:18px!important;height:18px!important;flex:0 0 18px!important;color:#ff6675!important}
+#helpWidget .dlx-help-toggle:hover{background:#252a34!important;transform:translateY(-2px)!important}
+#helpPanel.dlx-help-panel{
+  position:relative!important;inset:auto!important;width:min(390px,calc(100vw - 36px))!important;
+  max-height:min(690px,calc(100vh - 105px))!important;transform-origin:bottom left!important;
+}
+#helpPanel .dlx-help-content{max-height:calc(min(690px,100vh - 105px) - 126px)!important}
+@media(max-width:700px){
+  #dlxUtilityControls{gap:5px!important}
+  #dlxUtilityControls .dlx-settings-toggle{width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;border-radius:9px!important}
+  #dlxUtilityControls .dlx-settings-toggle span{display:none!important}
+  .dlx-settings-panel{top:76px!important;right:10px!important;bottom:auto!important;max-height:calc(100vh - 88px)!important}
+  #helpWidget.dlx-help-dock{left:12px!important;bottom:12px!important}
+  #helpWidget .dlx-help-toggle{min-height:41px!important;padding:0 12px!important}
+  #helpPanel.dlx-help-panel{width:min(370px,calc(100vw - 24px))!important;max-height:calc(100vh - 82px)!important}
+  #helpPanel .dlx-help-content{max-height:calc(100vh - 205px)!important}
+}
+</style>
+
+
+<style id="dlx-account-settings-v4">
+.dlx-account-id-card{margin:16px 0 2px;padding:13px 14px;border:1px solid #e1e5eb;border-radius:10px;background:#f5f6f8}
+.dlx-account-id-card>span{display:block;color:#8a3441;font-size:8px;font-weight:900;letter-spacing:.14em}
+.dlx-account-id-card>div{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:7px}
+.dlx-account-id-card strong{font:800 16px Inter,sans-serif;letter-spacing:.08em;color:#202630}
+.dlx-account-id-card button{padding:6px 9px;border:1px solid #d6dbe3;border-radius:6px;background:#fff;color:#394352;font-size:9px;font-weight:800}
+.dlx-account-id-card p{margin-top:6px;color:#788291;font-size:9px}
+.dlx-settings-section .dlx-show-password{display:flex;align-items:center;gap:8px;margin:5px 0 2px;color:#596575;font-size:10px;font-weight:700;cursor:pointer}
+.dlx-settings-section .dlx-show-password input{width:14px;height:14px;accent-color:#ad2437}
+.dlx-settings-section #dlxChangePassword{width:100%;min-height:40px;background:#a91f32;color:#fff;border:1px solid #a91f32;font-size:10px;letter-spacing:.02em}
+.dlx-settings-section #dlxChangePassword:hover{background:#8f192a}
+body.dlx-dark .dlx-account-id-card{background:#252b35;border-color:#454e5b}
+body.dlx-dark .dlx-account-id-card strong{color:#f4f6f8}
+body.dlx-dark .dlx-account-id-card button{background:#303744;border-color:#4a5361;color:#f0f2f5}
+body.dlx-dark .dlx-account-id-card p,body.dlx-dark .dlx-settings-section .dlx-show-password{color:#bac3cf}
+</style>
+
+</body>
 </html>
