@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon panier | DLX LOGISTICS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{colors:{brandDark:'#0B0F17',brandObsidian:'#131A26',brandRed:'#DC2626',brandRedHover:'#B91C1C'},fontFamily:{montserrat:['Montserrat','sans-serif'],sans:['Inter','sans-serif']}}}}</script>
+<style>
+*{box-sizing:border-box}body{font-family:Inter,sans-serif;background:#f4f6fa;color:#0B0F17;overflow-x:hidden}
+.font-montserrat{font-family:Montserrat,sans-serif}
+.panel{box-shadow:0 18px 55px rgba(11,15,23,.08)}
+button,a{ -webkit-tap-highlight-color:transparent } 
+@media(max-width:639px){main{padding-top:2rem!important;padding-bottom:2rem!important}main h1{font-size:2rem;line-height:1.15}#items{padding:1rem!important}#send,#clear{width:100%;min-height:48px}.panel{border-radius:1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="min-h-screen antialiased">
+<header class="bg-brandDark text-white border-b-2 border-brandRed">
+ <div class="max-w-5xl mx-auto px-5 py-5 flex items-center gap-4">
+  <a href="index.html" class="min-w-0">
+   <div class="font-montserrat font-extrabold tracking-wide text-lg sm:text-xl whitespace-nowrap inline-flex items-center gap-1"><span>DLX</span><span class="text-brandRed">LOGISTICS</span></div>
+   <div class="text-[9px] uppercase tracking-[.2em] text-gray-400">Espace client sécurisé</div>
+  </a>
+ </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+ <div class="mb-8">
+  <p class="text-brandRed text-[10px] font-bold uppercase tracking-[.22em]">Espace personnel</p>
+  <h1 class="font-montserrat text-3xl sm:text-4xl font-extrabold mt-2">Mon panier</h1>
+  <p class="text-gray-500 text-sm mt-3 max-w-2xl">Gérez vos demandes, vérifiez les informations et transmettez votre récapitulatif à DLX LOGISTICS.</p>
+ </div>
+ <section class="bg-white rounded-2xl border border-gray-200 panel overflow-hidden">
+  <div class="p-5 sm:p-7 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+   <div><h2 class="font-montserrat font-bold text-lg">Demandes enregistrées</h2><p class="text-xs text-gray-500 mt-1">Les modifications sont enregistrées sur ce navigateur.</p></div>
+   <span id="count" class="inline-flex self-start rounded-full bg-red-50 text-brandRed px-3 py-2 text-xs font-bold">0 demande</span>
+  </div>
+  <div id="items" class="p-5 sm:p-7 space-y-3">
+   <div class="text-sm text-gray-400">Chargement du panier…</div>
+  </div>
+  <div class="bg-gray-50 border-t border-gray-100 p-5 sm:p-7">
+   <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-xs leading-relaxed text-amber-900 mb-5">
+    <strong>Avant l’envoi :</strong> WhatsApp doit être installé ou accessible via WhatsApp Web et votre compte doit être connecté. Vérifiez le récapitulatif dans WhatsApp puis appuyez sur « Envoyer ». Si le texte ne s’affiche pas, envoyez manuellement votre demande au <strong>034 02 992 01</strong>.
+   </div>
+   <div id="notice" class="text-xs mb-4" role="status" aria-live="polite"></div>
+   <div class="flex flex-col sm:flex-row gap-3">
+    <button id="send" class="flex-1 rounded-xl bg-brandRed text-white font-bold text-xs uppercase tracking-wide px-5 py-4 hover:bg-brandRedHover transition">Envoyer tout le panier sur WhatsApp</button>
+    <button id="clear" class="rounded-xl border border-gray-300 bg-white text-gray-600 font-bold text-xs px-5 py-4 hover:border-red-400 hover:text-red-600 transition">Vider le panier</button>
+   </div>
+
+   <section class="mt-6 rounded-xl border border-gray-200 bg-white overflow-hidden" aria-labelledby="quoteTitle">
+    <div class="px-4 sm:px-5 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+     <div>
+      <h3 id="quoteTitle" class="font-montserrat font-bold text-sm text-gray-900">Copier le devis manuellement</h3>
+      <p class="text-xs text-gray-500 mt-1">Solution de secours si WhatsApp ne s’ouvre pas ou si le message ne se charge pas.</p>
+     </div>
+     <button id="copyQuote" type="button" class="shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-brandDark text-white text-[11px] font-bold px-4 py-3 hover:bg-gray-800 transition">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+      Copier le texte
+     </button>
+    </div>
+    <div class="p-4 sm:p-5">
+     <textarea id="quoteText" readonly rows="8" spellcheck="false" aria-label="Texte complet du devis à copier" class="w-full resize-y rounded-lg border border-gray-200 bg-gray-50 p-4 text-xs leading-6 text-gray-700 outline-none focus:border-brandRed focus:ring-2 focus:ring-red-100" placeholder="Le récapitulatif de vos demandes apparaîtra ici."></textarea>
+     <p class="mt-3 text-[11px] leading-relaxed text-gray-500">En cas de problème, cliquez sur « Copier le texte », puis ouvrez WhatsApp et collez le message dans la conversation officielle DLX LOGISTICS : <strong class="text-gray-800">034 02 992 01</strong>.</p>
+     <p id="copyStatus" class="mt-2 min-h-4 text-xs font-semibold text-green-700" role="status" aria-live="polite"></p>
+    </div>
+   </section>
+  </div>
+ </section>
+ <div class="mt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-gray-500">
+  <p>Pour votre confidentialité, le panier n’est pas synchronisé entre plusieurs appareils ou navigateurs.</p>
+  <a href="index.html" class="font-bold text-brandRed hover:underline">← Retour au site</a>
+ </div>
+</main>
+<footer class="text-center text-[10px] text-gray-400 py-8">© <span id="year"></span> DLX LOGISTICS — Assistance : 034 02 992 01</footer>
+<script>
+(() => {
+ const KEY='dlx_logistics_cart_v2', PHONE='261340299201';
+ const items=document.getElementById('items'), count=document.getElementById('count'), notice=document.getElementById('notice');
+ let cart=[];
+ const read=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');cart=Array.isArray(v)?v:[]}catch(e){cart=[]}};
+ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){message('Impossible de sauvegarder : vérifiez les paramètres de stockage du navigateur.',true)}};
+ const message=(text,error=false)=>{notice.textContent=text;notice.className='text-xs mb-4 '+(error?'text-red-600':'text-green-700')};
+ const wa=text=>'https://wa.me/'+PHONE+'?text='+encodeURIComponent(text);
+ const buildMessage=()=> 'Bonjour DLX LOGISTICS,\\n\\nJe souhaite obtenir un devis pour les demandes suivantes :\\n\\n'+cart.map((x,i)=>(i+1)+'. Produit : '+x.product+'\\nClient : '+x.name+'\\nBudget : '+x.budget+(x.email?'\\nE-mail : '+x.email:'')).join('\\n\\n')+'\\n\\nMerci de me confirmer la disponibilité, le prix détaillé, les délais estimés et les modalités de livraison.';
+ const render=()=>{
+  count.textContent=cart.length+(cart.length>1?' demandes':' demande');
+  const quoteText=document.getElementById('quoteText');
+  if(quoteText) quoteText.value=cart.length?buildMessage():'Votre panier est vide. Ajoutez une demande depuis le site principal pour générer votre récapitulatif.';
+  items.innerHTML='';
+  if(!cart.length){const empty=document.createElement('div');empty.className='rounded-xl border border-dashed border-gray-300 p-8 text-center';empty.innerHTML='<div class="font-montserrat font-bold text-gray-700">Votre panier est vide</div><p class="text-xs text-gray-500 mt-2">Ajoutez une demande depuis le formulaire du site principal.</p><a class="inline-flex mt-4 text-xs font-bold text-brandRed hover:underline" href="index.html#commander">Créer une demande</a>';items.appendChild(empty);return}
+  cart.forEach((x,i)=>{
+   const card=document.createElement('article');card.className='rounded-xl border border-gray-200 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4';
+   const info=document.createElement('div');info.className='min-w-0';
+   const title=document.createElement('h3');title.className='font-bold text-sm text-gray-900';title.textContent=(i+1)+'. '+x.product;
+   const details=document.createElement('p');details.className='text-xs text-gray-500 mt-2 leading-relaxed';details.textContent='Client : '+x.name+' · Budget : '+x.budget+(x.email?' · E-mail : '+x.email:'');
+   info.append(title,details);
+   const actions=document.createElement('div');actions.className='flex gap-2 shrink-0';
+   const follow=document.createElement('a');follow.href=wa('Bonjour DLX LOGISTICS, je souhaite un suivi de mon colis. Nom : '+x.name+'. Numéro de téléphone : _____. Colis / produit : '+x.product+'. Merci de me communiquer son état d’avancement.');follow.target='_blank';follow.rel='noopener noreferrer';follow.className='rounded-lg bg-brandDark text-white text-[10px] font-bold px-3 py-3';follow.textContent='Suivre';
+   const remove=document.createElement('button');remove.type='button';remove.className='rounded-lg border border-gray-300 text-gray-600 text-[10px] font-bold px-3 py-3 hover:border-red-400 hover:text-red-600';remove.textContent='Retirer';remove.addEventListener('click',()=>{cart=cart.filter(y=>y.id!==x.id);save();render();message('La demande a été retirée.')});
+   actions.append(follow,remove);card.append(info,actions);items.appendChild(card);
+  });
+ };
+ document.getElementById('copyQuote').addEventListener('click',async()=>{
+  const status=document.getElementById('copyStatus');
+  if(!cart.length){status.textContent='Votre panier est vide : aucun texte à copier.';status.className='mt-2 min-h-4 text-xs font-semibold text-red-600';return}
+  const text=buildMessage();
+  try{
+   if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(text)}
+   else{
+    const field=document.getElementById('quoteText');field.focus();field.select();field.setSelectionRange(0,field.value.length);
+    const copied=document.execCommand('copy');if(!copied)throw new Error('copy unavailable');
+   }
+   status.textContent='Texte copié. Vous pouvez le coller directement dans WhatsApp.';
+   status.className='mt-2 min-h-4 text-xs font-semibold text-green-700';
+  }catch(error){
+   const field=document.getElementById('quoteText');field.focus();field.select();field.setSelectionRange(0,field.value.length);
+   status.textContent='Sélection automatique : copiez le texte avec Ctrl+C (ou appui long sur mobile).';
+   status.className='mt-2 min-h-4 text-xs font-semibold text-amber-700';
+  }
+ });
+ document.getElementById('send').addEventListener('click',()=>{if(!cart.length){message('Ajoutez au moins une demande avant l’envoi.',true);return}window.location.href=wa(buildMessage());message('WhatsApp va s’ouvrir. Vérifiez le message puis appuyez sur Envoyer.')});
+ document.getElementById('clear').addEventListener('click',()=>{if(!cart.length){message('Le panier est déjà vide.');return}if(!confirm('Voulez-vous vraiment vider tout le panier ?'))return;cart=[];save();render();message('Le panier a été vidé.')});
+ window.addEventListener('storage',e=>{if(e.key===KEY){read();render();message('Le panier a été actualisé depuis un autre onglet.')}});
+ document.getElementById('year').textContent=new Date().getFullYear();read();render();
+})();
+</script>
+</body></html>
