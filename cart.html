@@ -83,7 +83,7 @@ button,a{ -webkit-tap-highlight-color:transparent }
  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){message('Impossible de sauvegarder : vérifiez les paramètres de stockage du navigateur.',true)}};
  const message=(text,error=false)=>{notice.textContent=text;notice.className='text-xs mb-4 '+(error?'text-red-600':'text-green-700')};
  const wa=text=>'https://wa.me/'+PHONE+'?text='+encodeURIComponent(text);
- const buildMessage=()=> 'Bonjour DLX LOGISTICS,\\n\\nJe souhaite obtenir un devis pour les demandes suivantes :\\n\\n'+cart.map((x,i)=>(i+1)+'. Produit : '+x.product+'\\nClient : '+x.name+'\\nBudget : '+x.budget+(x.email?'\\nE-mail : '+x.email:'')).join('\\n\\n')+'\\n\\nMerci de me confirmer la disponibilité, le prix détaillé, les délais estimés et les modalités de livraison.';
+ const buildMessage=()=> 'Bonjour DLX LOGISTICS,\\n\\nJe souhaite obtenir un devis pour les demandes suivantes :\\n\\n'+cart.map((x,i)=>(i+1)+'. Produit : '+x.product+'\\nClient : '+x.name+'\\nTéléphone : '+(x.phone||'Non renseigné')+'\\nBudget : '+x.budget+(x.email?'\\nE-mail : '+x.email:'')).join('\\n\\n')+'\\n\\nMerci de me confirmer la disponibilité, le prix détaillé, les délais estimés et les modalités de livraison.';
  const render=()=>{
   count.textContent=cart.length+(cart.length>1?' demandes':' demande');
   const quoteText=document.getElementById('quoteText');
@@ -94,7 +94,7 @@ button,a{ -webkit-tap-highlight-color:transparent }
    const card=document.createElement('article');card.className='rounded-xl border border-gray-200 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4';
    const info=document.createElement('div');info.className='min-w-0';
    const title=document.createElement('h3');title.className='font-bold text-sm text-gray-900';title.textContent=(i+1)+'. '+x.product;
-   const details=document.createElement('p');details.className='text-xs text-gray-500 mt-2 leading-relaxed';details.textContent='Client : '+x.name+' · Budget : '+x.budget+(x.email?' · E-mail : '+x.email:'');
+   const details=document.createElement('p');details.className='text-xs text-gray-500 mt-2 leading-relaxed';details.textContent='Client : '+x.name+' · Téléphone : '+(x.phone||'Non renseigné')+' · Budget : '+x.budget+(x.email?' · E-mail : '+x.email:'');
    info.append(title,details);
    const actions=document.createElement('div');actions.className='flex gap-2 shrink-0';
    const follow=document.createElement('a');follow.href=wa('Bonjour DLX LOGISTICS, je souhaite un suivi de mon colis. Nom : '+x.name+'. Numéro de téléphone : _____. Colis / produit : '+x.product+'. Merci de me communiquer son état d’avancement.');follow.target='_blank';follow.rel='noopener noreferrer';follow.className='rounded-lg bg-brandDark text-white text-[10px] font-bold px-3 py-3';follow.textContent='Suivre';
